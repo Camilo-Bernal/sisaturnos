@@ -16,8 +16,8 @@
     }else{
         echo '
             <script>
-            alert("Usuario no encontrado, favor verificar datos registrados");
-            window.location = "../index.php";
+            alert("Datos de acceso icorrectos \nVerifica e intenta nuevamente");
+            window.location = "../sesion.php";
             </script>
         ';
         exit;

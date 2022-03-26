@@ -35,8 +35,8 @@ if (isset($_SESSION['usuario'])) {
                     <!--Login-->
                     <form action="admin/login.php" method="post" class="formulario__login">
                         <h2>Iniciar Sesión</h2>
-                        <input type="text" placeholder="Correo Electronico" name="correo" autofocus required>
-                        <input type="password" placeholder="Contraseña" name="contrasenia" required>
+                        <input type="text" placeholder="Correo Electronico" name="correo" pattern="[A-Za-z0-9-_@.]{1,20}" autofocus required>
+                        <input type="password" placeholder="Contraseña" name="contrasenia" pattern="[A-Za-z0-9-_]{1,20}" required>
                         <button>Ingresar</button>
                         <td>
                     </form>
@@ -49,7 +49,7 @@ if (isset($_SESSION['usuario'])) {
                         <input type="password" placeholder="Contraseña" name="contrasenia" required>
                         <button>Regístrarse</button>
                     </form>
-                </div>
+                </div> 
             </div>
         </main>
         <script src="plugins/assets/js/script.js"></script>
