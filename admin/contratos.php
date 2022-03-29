@@ -1,5 +1,5 @@
 <?php
-require "lib/conexion.php";
+    require "lib/conexion.php";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -234,12 +234,12 @@ require "lib/conexion.php";
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Liata de empleados</h1>
+                            <h1>Liata de Contratos</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-                                <li class="breadcrumb-item active">Empleados</li>
+                                <li class="breadcrumb-item active">Contratos</li>
                             </ol>
                         </div>
                     </div>
@@ -247,6 +247,24 @@ require "lib/conexion.php";
             </section>
 
             <!-- Main content -->
+            <div class="card card-body">
+                <div class="row">
+                    <div class="text-center">
+                        <h1 class="text-center">Crear contrato</h1>
+                    </div>
+                </div>    
+                <div class="form-group">
+                    <form action="" method="post">
+                        <div class="mb-1">
+                            <label for="contrato">Contrato</label><br>
+                            <input type="text" name="contrato" placeholderr="tipo de contrato" autofocus required>
+                        </div>
+                                       
+                        <input type="submit" name="agregar" class="btn btn-primary" value="Crear">
+                    </form>
+                </div>
+            </div>
+
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
@@ -258,51 +276,32 @@ require "lib/conexion.php";
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Identificación</th>
-                                                <th>Apellidos</th>
-                                                <th>Nombres</th>
-                                                <th>Teléfono</th>
-                                                <th>Género</th>
-                                                <th>Profesión</th>
-                                                <th>Contrato</th>
-                                                <th>Cargo</th>
+                                                <th>Id</th>
+                                                <th>Tipo de contrato</th>
                                                 <th>Acciones</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
                                                 //crear una variable con la sentencia SQL
-                                                $sql = "SELECT * FROM empleados";
+                                                $sql = "SELECT * FROM tipocontrato";
                                                 // crear la variable para ejecutar la consulta
                                                 $consulta = mysqli_query($miConexion, $sql);
                                                 while ($campos = mysqli_fetch_array($consulta)) {?>
                                                 <tr class="table-secundary">
-                                                    <td><?=$campos['idPersonalAsistencial'];?></td>
-                                                    <td><?=$campos['apellidos'];?></td>
-                                                    <td><?=$campos['nombres'];?></td>
-                                                    <td><?=$campos['telefono'];?></td>
-                                                    <td><?=$campos['idGenero'];?></td>
-                                                    <td><?=$campos['idProfesion'];?></td>
-                                                    <td><?=$campos['idContrato'];?></td>
-                                                    <td><?=$campos['idCargo'];?></td>
+                                                    <td><?=$campos['id'];?></td>
+                                                    <td><?=$campos['tipoContrato'];?></td>
                                                     <th>
                                                         <a href="" class="btn btn-info"><i class="fa fa-marker"></i></a>
-                                                        <a href="" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
+                                                        <a href="? id=<?= $campos['id'];?>" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
                                                     </th>
                                                 </tr>
                                             <?php }?>
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th>Identificación</th>
-                                                <th>Apellidos</th>
-                                                <th>Nombres</th>
-                                                <th>Correo</th>
-                                                <th>Genero</th>
-                                                <th>Profesión</th>
-                                                <th>Contrato</th>
-                                                <th>Cargo</th>
-                                                <th>Editar | Borrar</th>
+                                                <th>Id</th>
+                                                <th>Tipo de contrato</th>
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -370,3 +369,41 @@ require "lib/conexion.php";
 </body>
 
 </html>
+
+<?php
+    //ingresar los valores a la tabla
+    if(isset($_POST['agregar']))
+    {
+        //recibir variables
+        $tContrato = $_POST['contrato'];
+
+        // crear una consulata para insertar las variables en la tabla
+        $sql = "INSERT INTO tipocontrato(tipoContrato) VALUES ('$tContrato')";
+        $consulta =mysqli_query($miConexion, $sql);
+        if (!$consulta) {
+            die("Consulta no realizada");
+        }
+        else{
+            $_SESSION['mensaje'] = "datos registrados";
+            header("Location: ./contratos.php"); // redirecciona
+        }
+    }
+?>
+
+<?php 
+    //Recibir la variable por el metodo Get
+    $id = $_GET['id'];
+
+    //Sentencis SQL para eliminar registro
+    $sql = "DELETE FROM tipocontrato WHERE id = '$id'";
+
+    $consulta = mysqli_query($miConexion, $sql);
+    //Validar la consulta
+    if (!$consulta) {
+        # code...
+        die("Consulta no realizada");
+    }
+    else{
+        header("Location: contratos.php"); // redirecciona
+    }
+?>

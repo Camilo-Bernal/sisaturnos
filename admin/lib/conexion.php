@@ -4,7 +4,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $database = "suturno";
+    $database = "suturno1";
 
     // crear la variable que maneja la conexión
     $miConexion = new mysqli($servername, $username, $password, $database)

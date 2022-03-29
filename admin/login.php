@@ -16,8 +16,8 @@
     }else{
         echo '
             <script>
-            alert("Datos de acceso icorrectos \nVerifica e intenta nuevamente");
-            window.location = "../sesion.php";
+                alert("Datos de acceso icorrectos \nVerifica e intenta nuevamente");
+                window.location = "../sesion.php";
             </script>
         ';
         exit;

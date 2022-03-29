@@ -2,9 +2,12 @@
 body {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
   font-family: 'Roboto', sans-serif;
   text-align: center;
-  background-image: url(../images/1.jpg);
+  margin-top: 100rem;
+  background-image: url(../images/images.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -25,7 +28,7 @@ input[type="text"], input[type="password"]{
 input[type="submit"] {
   padding: 10px;
   color: #fff;
-  background: #0098cb;
+  background:#00b8eb;
   width: 320px;
   margin: 20px auto;
   margin-top: 0;
@@ -34,18 +37,5 @@ input[type="submit"] {
   cursor: pointer;
 }
 input[type="submit"]:hover {
-  background-color: #00b8eb;
-}
-
-/* Header */
-header {
-  border-bottom: 2px solid #eee;
-  padding: 20px 0;
-  margin-bottom: 10px;
-  width: 100%;
-  text-align: center;
-}
-header a {
-  text-decoration: none;
-  color: #333;
+  background-color: #0098cb;
 }

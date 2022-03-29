@@ -35,10 +35,10 @@ if (isset($_SESSION['usuario'])) {
                     <!--Login-->
                     <form action="admin/login.php" method="post" class="formulario__login">
                         <h2>Iniciar Sesión</h2>
-                        <input type="text" placeholder="Correo Electronico" name="correo" pattern="[A-Za-z0-9-_@.]{1,20}" autofocus required>
-                        <input type="password" placeholder="Contraseña" name="contrasenia" pattern="[A-Za-z0-9-_]{1,20}" required>
-                        <button>Ingresar</button>
-                        <td>
+                        <input type="text" placeholder="Correo Electronico" name="correo" pattern="[A-Za-z0-9-_@.]{1,30}" autofocus required>
+                        <input type="password" placeholder="Contraseña" name="contrasenia" pattern="[A-Za-z0-9-_]{1,30}" required>
+                        <button>Ingresar</button> <br> <br>
+                        <a href="admin/pass/recuperarPass.php">¿Olvidaste tu contraseña?</a>
                     </form>
                     <!--Registro-->
                     <form action="admin/singup.php" method="POST" class="formulario__register">
@@ -52,6 +52,5 @@ if (isset($_SESSION['usuario'])) {
                 </div> 
             </div>
         </main>
-        <script src="plugins/assets/js/script.js"></script>
 </body>
-</html>
+</html

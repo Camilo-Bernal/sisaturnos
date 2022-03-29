@@ -1,5 +1,5 @@
 <?php
-    include 'lib/Conexion.php';
+    include 'lib/conexion.php';
 
    $nombre_completo = $_POST['nombre_completo']; 
    $usuario = $_POST['usuario'];
