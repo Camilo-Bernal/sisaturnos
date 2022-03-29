@@ -1,5 +1,5 @@
 <?php
-    require "lib/conexion.php";
+require "lib/conexion.php";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -173,6 +173,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
+                        
                         <li class="nav-item has-treeview">
                             <a href="empleados.php" class="nav-link ">
                                 <i class="nav-icon fas fa-table"></i>
@@ -200,7 +201,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                             <li class="nav-item">
-                            <a href="contratos.php" class="nav-link active">
+                            <a href="contratos.php" class="nav-link">
                                 <i class="far fa-circle nav-icon text-info"></i>
                                 <p>Tipo de contratos</p>
                                 </a>
@@ -235,12 +236,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Liata de Contratos</h1>
+                            <h1>otros contenidos</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-                                <li class="breadcrumb-item active">Contratos</li>
+                                <li class="breadcrumb-item active">Otros</li>
                             </ol>
                         </div>
                     </div>
@@ -248,60 +249,7 @@
             </section>
 
             <!-- Main content -->
-            <section class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <!-- /.card -->
-                            <div class="card">
-                                <!-- /.card-header -->
-                                <div class="card-body">
-                                    <div class="col-3">
-                                        <a href="./crearContrato.php" class="btn btn-info">Agregar nuevo contrato<i class=""></a>           
-                                    </div> <br>
-                                    <table id="example1" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Id</th>
-                                                <th>Tipo de contrato</th>
-                                                <th>Acciones</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                                //crear una variable con la sentencia SQL
-                                                $sql = "SELECT * FROM contrato";
-                                                // crear la variable para ejecutar la consulta
-                                                $consulta = mysqli_query($miConexion, $sql);
-                                                while ($campos = mysqli_fetch_array($consulta)) {?>
-                                                <tr class="table-secundary">
-                                                    <td><?=$campos['idContrato'];?></td>
-                                                    <td><?=$campos['tipoContrato'];?></td>
-                                                    <th>
-                                                        <a href="" class="btn btn-info"><i class="fa fa-marker"></i></a>
-                                                        <a href="./eliminarContrato.php? id=<?= $campos['idContrato'];?>" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
-                                                    </th>
-                                                </tr>
-                                            <?php }?>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>Id</th>
-                                                <th>Tipo de contrato</th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-                                </div>
-                                <!-- /.card-body -->
-                            </div>
-                            <!-- /.card -->
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
-                </div>
-                <!-- /.container-fluid -->
-            </section>
+            <h1>No hay nada para msotrar aquí, se sugiere contenido multimedia</h1>
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
@@ -325,53 +273,12 @@
     <script src="../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- DataTables -->
-    <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
     <!-- page script -->
-    <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "autoWidth": false,
-            });
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-        });
-    </script>
+
 </body>
 
 </html>
-
-<?php
-    //ingresar los valores a la tabla
-    if(isset($_POST['agregar']))
-    {
-        //recibir variables
-        $tContrato = $_POST['contrato'];
-
-        // crear una consulata para insertar las variables en la tabla
-        $sql = "INSERT INTO contrato(tipoContrato) VALUES ('$tContrato')";
-        $consulta =mysqli_query($miConexion, $sql);
-        if (!$consulta) {
-            die("Consulta no realizada");
-        }
-        else{
-            $_SESSION['mensaje'] = "datos registrados";
-            header("Location: ./contratos.php"); // redirecciona
-        }
-    }
-?>

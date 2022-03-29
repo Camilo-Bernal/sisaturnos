@@ -4,9 +4,9 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $database = "suturno1";
+    $database = "suturno";
 
     // crear la variable que maneja la conexión
     $miConexion = new mysqli($servername, $username, $password, $database)
-    or die("Conexión falló: ". $conexion->connect_error);
+    or die("Conexión falló: ". $miConexion->connect_error);
 ?>

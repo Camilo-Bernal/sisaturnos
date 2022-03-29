@@ -235,7 +235,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Liata de Contratos</h1>
+                            <h1>Crear contrato</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -246,62 +246,24 @@
                     </div>
                 </div><!-- /.container-fluid -->
             </section>
-
             <!-- Main content -->
-            <section class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <!-- /.card -->
-                            <div class="card">
-                                <!-- /.card-header -->
-                                <div class="card-body">
-                                    <div class="col-3">
-                                        <a href="./crearContrato.php" class="btn btn-info">Agregar nuevo contrato<i class=""></a>           
-                                    </div> <br>
-                                    <table id="example1" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Id</th>
-                                                <th>Tipo de contrato</th>
-                                                <th>Acciones</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                                //crear una variable con la sentencia SQL
-                                                $sql = "SELECT * FROM contrato";
-                                                // crear la variable para ejecutar la consulta
-                                                $consulta = mysqli_query($miConexion, $sql);
-                                                while ($campos = mysqli_fetch_array($consulta)) {?>
-                                                <tr class="table-secundary">
-                                                    <td><?=$campos['idContrato'];?></td>
-                                                    <td><?=$campos['tipoContrato'];?></td>
-                                                    <th>
-                                                        <a href="" class="btn btn-info"><i class="fa fa-marker"></i></a>
-                                                        <a href="./eliminarContrato.php? id=<?= $campos['idContrato'];?>" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
-                                                    </th>
-                                                </tr>
-                                            <?php }?>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>Id</th>
-                                                <th>Tipo de contrato</th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-                                </div>
-                                <!-- /.card-body -->
-                            </div>
-                            <!-- /.card -->
-                        </div>
-                        <!-- /.col -->
+            <div class="card card-body">
+                <div class="row">
+                    <div class="text-center">
+                        <h1 class="text-center">Crear contrato</h1>
                     </div>
-                    <!-- /.row -->
+                </div>    
+                <div class="form-group">
+                    <form action="" method="post">
+                        <div class="mb-1">
+                            <label for="contrato">Contrato</label><br>
+                            <input type="text" name="contrato" placeholderr="tipo de contrato" autofocus required>
+                        </div>
+                                       
+                        <input type="submit" name="agregar" class="btn btn-primary" value="Crear">
+                    </form>
                 </div>
-                <!-- /.container-fluid -->
-            </section>
+            </div>
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
@@ -325,37 +287,12 @@
     <script src="../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- DataTables -->
-    <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js"></script>
-    <!-- page script -->
-    <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "autoWidth": false,
-            });
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-        });
-    </script>
+    <script src="../dist/js/demo.js"></script>    
 </body>
-
 </html>
-
 <?php
     //ingresar los valores a la tabla
     if(isset($_POST['agregar']))
@@ -370,7 +307,7 @@
             die("Consulta no realizada");
         }
         else{
-            $_SESSION['mensaje'] = "datos registrados";
+            //$_SESSION['mensaje'] = "datos registrados";
             header("Location: ./contratos.php"); // redirecciona
         }
     }

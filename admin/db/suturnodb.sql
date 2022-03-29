@@ -36,15 +36,15 @@ INSERT INTO `cargos` (`idCargo`, `cargo`) VALUES
 CREATE TABLE IF NOT EXISTS `contrato` (
   `idContrato` int(11) NOT NULL AUTO_INCREMENT,
   `tipoContrato` varchar(40) NOT NULL,
-  `fechaInicio` date DEFAULT NULL,
-  `fechaFin` date DEFAULT NULL,
   PRIMARY KEY (`idContrato`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
 
--- Volcando datos para la tabla suturno.contrato: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla suturno.contrato: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `contrato` DISABLE KEYS */;
-INSERT INTO `contrato` (`idContrato`, `tipoContrato`, `fechaInicio`, `fechaFin`) VALUES
-	(3, 'Planta Permananete', '2022-01-01', '2022-12-31');
+INSERT INTO `contrato` (`idContrato`, `tipoContrato`) VALUES
+	(1, 'Planta Permananete'),
+	(6, 'Planta Temporal'),
+	(7, 'OPS - SAS');
 /*!40000 ALTER TABLE `contrato` ENABLE KEYS */;
 
 -- Volcando estructura para vista suturno.empleados
@@ -135,11 +135,8 @@ CREATE TABLE IF NOT EXISTS `personalasistencial` (
   CONSTRAINT `personalasistencial_ibfk_6` FOREIGN KEY (`idGenero`) REFERENCES `genero` (`idGenero`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Volcando datos para la tabla suturno.personalasistencial: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla suturno.personalasistencial: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `personalasistencial` DISABLE KEYS */;
-INSERT INTO `personalasistencial` (`idPersonalAsistencial`, `nombres`, `apellidos`, `telefono`, `correoElectronico`, `idContrato`, `idNomina`, `idProfesion`, `idCargo`, `idTipoId`, `idGenero`) VALUES
-	(1086859485, 'Camilo', 'Bernal', 3184180000, 'cabe0320@gmail.com', 3, 2, 1, 1, 2, 1),
-	(1087426879, 'Angi', 'Gomez', 3146030000, 'angi@gmail.com', 3, 2, 1, 2, 2, 2);
 /*!40000 ALTER TABLE `personalasistencial` ENABLE KEYS */;
 
 -- Volcando estructura para tabla suturno.profesion
@@ -178,6 +175,20 @@ CREATE TABLE IF NOT EXISTS `programacion` (
 -- Volcando datos para la tabla suturno.programacion: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `programacion` DISABLE KEYS */;
 /*!40000 ALTER TABLE `programacion` ENABLE KEYS */;
+
+-- Volcando estructura para tabla suturno.recuperarpass
+CREATE TABLE IF NOT EXISTS `recuperarpass` (
+  `id` int(6) NOT NULL AUTO_INCREMENT,
+  `email` varchar(50) NOT NULL DEFAULT '0',
+  `token` varchar(50) NOT NULL DEFAULT '0',
+  `codigo` int(6) NOT NULL DEFAULT 0,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Volcando datos para la tabla suturno.recuperarpass: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `recuperarpass` DISABLE KEYS */;
+/*!40000 ALTER TABLE `recuperarpass` ENABLE KEYS */;
 
 -- Volcando estructura para tabla suturno.servicios
 CREATE TABLE IF NOT EXISTS `servicios` (
@@ -225,15 +236,15 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `name` varchar(50) DEFAULT NULL,
   `user` varchar(20) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
-  `password` varchar(50) DEFAULT NULL,
+  `password` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 -- Volcando datos para la tabla suturno.usuarios: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
 INSERT INTO `usuarios` (`id`, `name`, `user`, `email`, `password`) VALUES
-	(5, 'Jesús Camilo Bernal', 'camilo ', 'cabe0320@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055'),
-	(6, 'Camilo Bernal', 'jesús', 'jesbernal@umariana.edu.co', '81dc9bdb52d04dc20036dbd8313ed055');
+	(1, 'Jesús Camilo Bernal', 'camilo ', 'cabe0320@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055'),
+	(2, 'Camilo Bernal', 'jesús', 'jesbernal@umariana.edu.co', '81dc9bdb52d04dc20036dbd8313ed055');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 -- Volcando estructura para vista suturno.empleados

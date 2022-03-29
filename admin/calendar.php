@@ -176,14 +176,6 @@
                with font-awesome or any other icon font library -->
 
             <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-edit"></i>
-                <p>
-                  Forms
-                </p>
-              </a>
-            </li>
-            <li class="nav-item has-treeview">
               <a href="empleados.php" class="nav-link">
                 <i class="nav-icon fas fa-table"></i>
                 <p>
@@ -211,9 +203,18 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>no hace nada útil</p>
                 </a>
-              </li>
+              </li>           
+              
             </ul>
+            <li class="nav-item has-treeview">
+              <a href="otros.php" class="nav-link">
+                <i class="nav-icon fas fa-edit"></i>
+                <p>
+                  Otros
+                </p>
+              </a>
             </li>
+
             <!-- LABELS -->
             <li class="nav-header">LABELS</li>
             <li class="nav-item">
