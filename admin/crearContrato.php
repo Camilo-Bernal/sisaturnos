@@ -1,5 +1,9 @@
 <?php
     require "lib/conexion.php";
+    $user = $_SESSION['email'];
+    if (!isset($user)) {
+        header ( "Location: ../sesion.php" );
+      }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -164,7 +168,11 @@
                         <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Camilo Bernal</a>
+                        <a href="#" class="d-block">
+                            <?php 
+                                echo "$user";
+                            ?>
+                        </a>
                     </div>
                 </div>
 
@@ -239,7 +247,7 @@
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                                <li class="breadcrumb-item"><a href="inicio.php">Inicio</a></li>
                                 <li class="breadcrumb-item active">Contratos</li>
                             </ol>
                         </div>

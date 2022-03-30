@@ -1,3 +1,11 @@
+<?php
+    require "lib/conexion.php";
+    $user = $_SESSION['email'];
+
+    if (!isset($user)) {
+      header ( "Location: ../sesion.php" );
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -164,8 +172,11 @@
             <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block">Camilo Bernal</a>
-            <!-- <h6 class="text-blue">hola</h6> -->
+            <a href="#" class="d-block">
+                <?php 
+                  echo "$user";
+                ?>
+            </a>
           </div>
         </div>
 
@@ -194,13 +205,13 @@
               <ul class="nav nav-treeview">
               <li class="nav-item">
               <a href="asignarTurno.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fa-circle nav-icon text-info"></i>
                   <p>Asignar Turnos</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="tables/data.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fa-circle nav-icon text-info"></i>
                   <p>no hace nada útil</p>
                 </a>
               </li>           
@@ -241,8 +252,8 @@
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Calendar</li>
+                <li class="breadcrumb-item"><a href="inicio.php">Inicio</a></li>
+                <li class="breadcrumb-item active">Calendario</li>
               </ol>
             </div>
           </div>
@@ -270,7 +281,7 @@
                       <div class="checkbox">
                         <label for="drop-remove">
                           <input type="checkbox" id="drop-remove">
-                          remove after drop
+                          quitar después de soltar
                         </label>
                       </div>
                     </div>
@@ -280,7 +291,7 @@
                 <!-- /.card -->
                 <div class="card">
                   <div class="card-header">
-                    <h3 class="card-title">Create Event</h3>
+                    <h3 class="card-title">Crear Evento</h3>
                   </div>
                   <div class="card-body">
                     <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
@@ -295,10 +306,10 @@
                     </div>
                     <!-- /btn-group -->
                     <div class="input-group">
-                      <input id="new-event" type="text" class="form-control" placeholder="Event Title">
+                      <input id="new-event" type="text" class="form-control" placeholder="Título del Evento">
 
                       <div class="input-group-append">
-                        <button id="add-new-event" type="button" class="btn btn-primary">Add</button>
+                        <button id="add-new-event" type="button" class="btn btn-primary">Agregar</button>
                       </div>
                       <!-- /btn-group -->
                     </div>

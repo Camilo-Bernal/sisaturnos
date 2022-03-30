@@ -1,5 +1,10 @@
 <?php
-require "lib/conexion.php";
+    require "lib/conexion.php";
+    $user = $_SESSION['email'];
+
+    if (!isset($user)) {
+        header ( "Location: ../sesion.php" );
+      }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -161,56 +166,60 @@ require "lib/conexion.php";
                         <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Camilo Bernal</a>
+                        <a href="#" class="d-block">
+                            <?php 
+                                echo "$user";
+                            ?>
+                        </a>
                     </div>
                 </div>
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-                        with font-awesome or any other icon font library -->
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-edit"></i>
-                                <p>
-                                    Forms
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="empleados.php" class="nav-link">
-                                <i class="nav-icon fas fa-table"></i>
-                                <p>
-                                    <i class="fas fa-angle-left right"></i>
-                                    Empleados
-                                </p>
-                            </a>
-                            
+                        <a href="empleados.php" class="nav-link">
+                            <i class="nav-icon fas fa-table"></i>
+                            <p>
+                            Empleados
+                            </p>
+                        </a>
                         </li>
                         <li class="nav-item">
-                            <a href="calendar.php" class="nav-link active">
-                                <i class="nav-icon far fa-calendar-alt"></i>
-                                <p>
-                                  <i class="fas fa-angle-left right"></i>
-                                  Calendario
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                            <a href="asignarTurno.php" class="nav-link active">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Asignar Turnos</p>
-                              </a>
-                            </li>
-                            <li class="nav-item">
-                              <a href="tables/data.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>no hace nada útil</p>
-                              </a>
-                            </li>
-                          </ul>
+                        <a href="calendar.php" class="nav-link active">
+                            <i class="nav-icon far fa-calendar-alt"></i>
+                            <p>
+                                <i class="fas fa-angle-left right"></i>
+                                Calendario
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                        <a href="asignarTurno.php" class="nav-link active">                            
+                        <i class="far fa-circle nav-icon text-info"></i>
+                            <p>Asignar Turnos</p>
+                        </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="tables/data.html" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>no hace nada útil</p>
+                            </a>
+                        </li>           
+                        
+                        </ul>
+                        <li class="nav-item has-treeview">
+                        <a href="otros.php" class="nav-link">
+                            <i class="nav-icon fas fa-edit"></i>
+                            <p>
+                                Otros
+                            </p>
+                        </a>
+                        </li>
+
                         <!-- LABELS -->
                         <li class="nav-header">LABELS</li>
                         <li class="nav-item">
@@ -237,7 +246,7 @@ require "lib/conexion.php";
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                                <li class="breadcrumb-item"><a href="inicio.php">Inicio</a></li>
                                 <li class="breadcrumb-item active">Empleados</li>
                             </ol>
                         </div>
