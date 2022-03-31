@@ -212,9 +212,18 @@
                             <li class="nav-item">
                             <a href="contratos.php" class="nav-link">
                                 <i class="far fa-circle nav-icon text-info"></i>
-                                <p>Tipo de contratos</p>
+                                <p>contratos</p>
                                 </a>
                             </li>
+                            <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                            <a href="profesiones.php" class="nav-link">
+                                <i class="far fa-circle nav-icon text-info"></i>
+                                <p>profesiones</p>
+                                </a>
+                            </li>
+
+
                             <li class="nav-item">
                                 <a href="tables/data.html" class="nav-link">
                                 <i class="far fa-circle nav-icon text-info"></i>

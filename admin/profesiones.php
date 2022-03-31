@@ -244,12 +244,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Liata de Contratos</h1>
+                            <h1>Lista de Profesiones</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="inicio.php">Inicio</a></li>
-                                <li class="breadcrumb-item active">Contratos</li>
+                                <li class="breadcrumb-item active">Profesiones</li>
                             </ol>
                         </div>
                     </div>
@@ -266,39 +266,33 @@
                                 <!-- /.card-header -->
                                 <div class="card-body">
                                     <div class="col-3">
-                                        <a href="./crearContrato.php" class="btn btn-info">Agregar nuevo contrato<i class=""></a>           
+                                        <a href="./crearProfesion.php" class="btn btn-info">Agregar una profesion<i class=""></a>           
                                     </div> <br>
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th>Id</th>
-                                                <th>Tipo de contrato</th>
+                                                <th>Profesion</th>
                                                 <th>Acciones</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
                                                 //crear una variable con la sentencia SQL
-                                                $sql = "SELECT * FROM contrato";
+                                                $sql = "SELECT * FROM profesion";
                                                 // crear la variable para ejecutar la consulta
                                                 $consulta = mysqli_query($miConexion, $sql);
                                                 while ($campos = mysqli_fetch_array($consulta)) {?>
                                                 <tr class="table-secundary">
-                                                    <td><?=$campos['idContrato'];?></td>
-                                                    <td><?=$campos['tipoContrato'];?></td>
+                                                    <td><?=$campos['idProfesion'];?></td>
+                                                    <td><?=$campos['profesion'];?></td>
                                                     <th>
                                                         <a href="" class="btn btn-info"><i class="fa fa-marker"></i></a>
 
                                                         
                                                         
-                                                        <a href="./eliminarContrato.php? id=<?= $campos['idContrato'];?>" class="btn btn-danger"><i class="fa fa-trash-alt"></i>                                                                                      
-                                                        </a>
-
-
-                                                        
-                                                        
-                                                        
-                                                            
+                                                        <a href="./eliminarProfesion.php? id=<?= $campos['idProfesion'];?>" class="btn btn-danger"><i class="fa fa-trash-alt"></i>                                                                                      
+                                                        </a>              
                                                             
                                                         
 
@@ -310,7 +304,7 @@
                                         <tfoot>
                                             <tr>
                                                 <th>Id</th>
-                                                <th>Tipo de contrato</th>
+                                                <th>Profesion</th>
                                             </tr>
                                         </tfoot>
                                     </table> 
@@ -336,8 +330,7 @@
             <div class="float-right d-none d-sm-block">
                 <b>Version</b> 3.0.5
             </div>
-            <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-            reserved.
+            <strong>Unimar suturno
         </footer>
 
         <!-- Control Sidebar -->
@@ -363,7 +356,16 @@
     <script src="../dist/js/demo.js"></script>
 
     <!-- modal script -->
-  
+    <script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+          if (event.target == modal) {
+                 modal.style.display = "none";
+                   }
+                   }
+    </script>
 
     
     <!-- page script -->
@@ -388,3 +390,22 @@
 
 </html>
 
+<?php
+    //ingresar los valores a la tabla
+    if(isset($_POST['agregar']))
+    {
+        //recibir variables
+        $profesion = $_POST['profesion'];
+
+        // crear una consulata para insertar las variables en la tabla
+        $sql = "INSERT INTO contrato(tipoContrato) VALUES ('$profesion')";
+        $consulta =mysqli_query($miConexion, $sql);
+        if (!$consulta) {
+            die("Consulta no realizada");
+        }
+        else{
+            $_SESSION['mensaje'] = "datos registrados";
+            header("Location: ./profesiones.php"); // redirecciona
+        }
+    }
+?>

@@ -265,7 +265,7 @@
                     <form action="" method="post">
                         <div class="mb-1">
                             <label for="contrato">Contrato</label><br>
-                            <input type="text" name="contrato" placeholderr="tipo de contrato" autofocus required>
+                            <input type="text" name="contrato" placeholder="tipo de contrato" autofocus required>
                         </div>
                                        
                         <input type="submit" name="agregar" class="btn btn-primary" value="Crear">
@@ -314,9 +314,14 @@
         if (!$consulta) {
             die("Consulta no realizada");
         }
-        else{
-            //$_SESSION['mensaje'] = "datos registrados";
-            header("Location: ./contratos.php"); // redirecciona
+        else{ 
+            echo '
+            <script>
+                alert("Contrato creado ");
+                window.location = "./contratos.php";
+            </script>
+        ';
+               
         }
     }
 ?>

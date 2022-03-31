@@ -1,7 +1,6 @@
 <?php
     require "lib/conexion.php";
     $user = $_SESSION['email'];
-
     if (!isset($user)) {
         header ( "Location: ../sesion.php" );
       }
@@ -209,9 +208,9 @@
                             </a>
                             <ul class="nav nav-treeview">
                             <li class="nav-item">
-                            <a href="contratos.php" class="nav-link active">
+                            <a href="servicios.php" class="nav-link active">
                                 <i class="far fa-circle nav-icon text-info"></i>
-                                <p>Tipo de contratos</p>
+                                <p>Servicios</p>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -244,91 +243,35 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Liata de Contratos</h1>
+                            <h1>Crear servicio</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="inicio.php">Inicio</a></li>
-                                <li class="breadcrumb-item active">Contratos</li>
+                                <li class="breadcrumb-item active">Servicios</li>
                             </ol>
                         </div>
                     </div>
                 </div><!-- /.container-fluid -->
             </section>
-
             <!-- Main content -->
-            <section class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <!-- /.card -->
-                            <div class="card">
-                                <!-- /.card-header -->
-                                <div class="card-body">
-                                    <div class="col-3">
-                                        <a href="./crearContrato.php" class="btn btn-info">Agregar nuevo contrato<i class=""></a>           
-                                    </div> <br>
-                                    <table id="example1" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Id</th>
-                                                <th>Tipo de contrato</th>
-                                                <th>Acciones</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                                //crear una variable con la sentencia SQL
-                                                $sql = "SELECT * FROM contrato";
-                                                // crear la variable para ejecutar la consulta
-                                                $consulta = mysqli_query($miConexion, $sql);
-                                                while ($campos = mysqli_fetch_array($consulta)) {?>
-                                                <tr class="table-secundary">
-                                                    <td><?=$campos['idContrato'];?></td>
-                                                    <td><?=$campos['tipoContrato'];?></td>
-                                                    <th>
-                                                        <a href="" class="btn btn-info"><i class="fa fa-marker"></i></a>
-
-                                                        
-                                                        
-                                                        <a href="./eliminarContrato.php? id=<?= $campos['idContrato'];?>" class="btn btn-danger"><i class="fa fa-trash-alt"></i>                                                                                      
-                                                        </a>
-
-
-                                                        
-                                                        
-                                                        
-                                                            
-                                                            
-                                                        
-
-                                                        
-                                                    </th>
-                                                </tr>
-                                            <?php }?>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>Id</th>
-                                                <th>Tipo de contrato</th>
-                                            </tr>
-                                        </tfoot>
-                                    </table> 
-
-                                    
-
-
-                                </div>
-                                <!-- /.card-body -->
-                            </div>
-                            <!-- /.card -->
-                        </div>
-                        <!-- /.col -->
+            <div class="card card-body">
+                <div class="row">
+                    <div class="text-center">
+                        <h1 class="text-center">Crear servicio</h1>
                     </div>
-                    <!-- /.row -->
+                </div>    
+                <div class="form-group">
+                    <form action="" method="post">
+                        <div class="mb-1">
+                            <label for="servicio">Servicio</label><br>
+                            <input type="text" name="servicio" placeholder="servicio" autofocus required>
+                        </div>
+                                       
+                        <input type="submit" name="agregar" class="btn btn-primary" value="Crear">
+                    </form>
                 </div>
-                <!-- /.container-fluid -->
-            </section>
+            </div>
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
@@ -352,39 +295,33 @@
     <script src="../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- DataTables -->
-    <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js"></script>
-
-    <!-- modal script -->
-  
-
-    
-    <!-- page script -->
-    <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "autoWidth": false,
-            });
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-        });
-    </script>
+    <script src="../dist/js/demo.js"></script>    
 </body>
-
 </html>
+<?php
+    //ingresar los valores a la tabla
+    if(isset($_POST['agregar']))
+    {
+        //recibir variables
+        $Servicio = $_POST['servicio'];
 
+        // crear una consulata para insertar las variables en la tabla
+        $sql = "INSERT INTO servicios(nombreServicio) VALUES ('$Servicio')";
+        $consulta =mysqli_query($miConexion, $sql);
+        if (!$consulta) {
+            die("Consulta no realizada");
+        }
+        else{ 
+            echo '
+            <script>
+                alert("Servicio registrado ");
+                window.location = "./servicios.php";
+            </script>
+        ';
+               
+        }
+    }
+?>

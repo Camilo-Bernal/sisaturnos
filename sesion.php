@@ -52,6 +52,7 @@ if (isset($_SESSION['usuario'])) {
             </div> 
         </div>
     </main>
-    <script src="assets/js/script.js"></script>
+    <script src="plugins/assets/js/script.js"></script>
+    
 </body>
 </html

@@ -209,9 +209,9 @@
                             </a>
                             <ul class="nav nav-treeview">
                             <li class="nav-item">
-                            <a href="contratos.php" class="nav-link active">
+                            <a href="cargos.php" class="nav-link active">
                                 <i class="far fa-circle nav-icon text-info"></i>
-                                <p>Tipo de contratos</p>
+                                <p>Cargos</p>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -244,12 +244,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Liata de Contratos</h1>
+                            <h1>Lista de cargos</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="inicio.php">Inicio</a></li>
-                                <li class="breadcrumb-item active">Contratos</li>
+                                <li class="breadcrumb-item active">Cargos</li>
                             </ol>
                         </div>
                     </div>
@@ -266,32 +266,32 @@
                                 <!-- /.card-header -->
                                 <div class="card-body">
                                     <div class="col-3">
-                                        <a href="./crearContrato.php" class="btn btn-info">Agregar nuevo contrato<i class=""></a>           
+                                        <a href="./crearCargo.php" class="btn btn-info">Agregar  nuevo cargo<i class=""></a>           
                                     </div> <br>
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th>Id</th>
-                                                <th>Tipo de contrato</th>
+                                                <th>Cargo</th>
                                                 <th>Acciones</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
                                                 //crear una variable con la sentencia SQL
-                                                $sql = "SELECT * FROM contrato";
+                                                $sql = "SELECT * FROM cargos";
                                                 // crear la variable para ejecutar la consulta
                                                 $consulta = mysqli_query($miConexion, $sql);
                                                 while ($campos = mysqli_fetch_array($consulta)) {?>
                                                 <tr class="table-secundary">
-                                                    <td><?=$campos['idContrato'];?></td>
-                                                    <td><?=$campos['tipoContrato'];?></td>
+                                                    <td><?=$campos['idCargo'];?></td>
+                                                    <td><?=$campos['cargo'];?></td>
                                                     <th>
                                                         <a href="" class="btn btn-info"><i class="fa fa-marker"></i></a>
 
                                                         
                                                         
-                                                        <a href="./eliminarContrato.php? id=<?= $campos['idContrato'];?>" class="btn btn-danger"><i class="fa fa-trash-alt"></i>                                                                                      
+                                                        <a href="./eliminarCargo.php? id=<?= $campos['idCargo'];?>" class="btn btn-danger"><i class="fa fa-trash-alt"></i>                                                                                      
                                                         </a>
 
 
@@ -310,7 +310,7 @@
                                         <tfoot>
                                             <tr>
                                                 <th>Id</th>
-                                                <th>Tipo de contrato</th>
+                                                <th>Cargo</th>
                                             </tr>
                                         </tfoot>
                                     </table> 
@@ -336,8 +336,7 @@
             <div class="float-right d-none d-sm-block">
                 <b>Version</b> 3.0.5
             </div>
-            <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-            reserved.
+            <strong> Umariana 
         </footer>
 
         <!-- Control Sidebar -->
