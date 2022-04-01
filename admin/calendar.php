@@ -3,7 +3,7 @@
     $user = $_SESSION['email'];
 
     if (!isset($user)) {
-      header ( "Location: ../sesion.php" );
+      header ( "Location: ../index.php" );
     }
 ?>
 <!DOCTYPE html>
@@ -276,7 +276,7 @@
                       <div class="external-event bg-success">Mañana</div>
                       <div class="external-event bg-warning">Tarde</div>
                       <div class="external-event bg-info">Noche</div>
-                      <div class="external-event bg-primary">Libren</div>
+                      <div class="external-event bg-primary">Libre</div>
                       <div class="external-event bg-danger">Incapacidad</div>
                       <div class="checkbox">
                         <label for="drop-remove">

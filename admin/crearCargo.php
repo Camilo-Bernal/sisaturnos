@@ -2,7 +2,7 @@
     require "lib/conexion.php";
     $user = $_SESSION['email'];
     if (!isset($user)) {
-        header ( "Location: ../sesion.php" );
+        header ( "Location: ../index.php" );
       }
 ?>
 <!DOCTYPE html>

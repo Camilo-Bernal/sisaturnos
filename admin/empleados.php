@@ -3,7 +3,7 @@
     $user = $_SESSION['email'];
 
     if (!isset($user)) {
-        header ( "Location: ../sesion.php" );
+        header ( "Location: ../index.php" );
       }
 ?>
 <!DOCTYPE html>
@@ -201,7 +201,7 @@
                             <li class="nav-item">
                                 <a href="tables/data.html" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>no hace nada útil</p>
+                                <p>Editar empleado</p>
                                 </a>
                             </li>
                             </ul>
@@ -244,7 +244,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Liata de empleados</h1>
+                            <h1>Lista de empleados</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -294,11 +294,6 @@
                                                     <td><?=$campos['idGenero'];?></td>
                                                     <td><?=$campos['idProfesion'];?></td>
                                                     <td><?=$campos['idContrato'];?></td>
-                                                    <td><?=$campos['idCargo'];?></td>
-                                                    <th>
-                                                        <a href="" class="btn btn-info"><i class="fa fa-marker"></i></a>
-                                                        <a href="" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
-                                                    </th>
                                                 </tr>
                                             <?php }?>
                                         </tbody>
@@ -307,12 +302,11 @@
                                                 <th>Identificación</th>
                                                 <th>Apellidos</th>
                                                 <th>Nombres</th>
-                                                <th>Correo</th>
-                                                <th>Genero</th>
+                                                <th>Teléfono</th>
+                                                <th>Género</th>
                                                 <th>Profesión</th>
                                                 <th>Contrato</th>
                                                 <th>Cargo</th>
-                                                <th>Acciones</th>
                                             </tr>
                                         </tfoot>
                                     </table>
