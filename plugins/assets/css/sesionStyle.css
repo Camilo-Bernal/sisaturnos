@@ -7,11 +7,14 @@
 }
 
 body{
-    background-image: url(../images/images.jpg);
+      
+      
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
+    background-image: url(../images/DeptalColor.jpg) ; 
+   
 }
 
 main{
@@ -35,7 +38,7 @@ main{
     justify-content: center;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    background-color: rgba(49, 130, 211, 0.5);
+    background-color: rgba(41, 166, 47, 0.617);
 
 }
 
