@@ -205,13 +205,13 @@
               <ul class="nav nav-treeview">
               <li class="nav-item">
               <a href="asignarTurno.php" class="nav-link">
-                  <i class="far fa-circle nav-icon text-info"></i>
+                  <i class="far fa-circle nav-icon text-success"></i>
                   <p>Asignar Turnos</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="tables/data.html" class="nav-link">
-                  <i class="far fa-circle nav-icon text-info"></i>
+                  <i class="far fa-circle nav-icon text-danger"></i>
                   <p>no hace nada útil</p>
                 </a>
               </li>           

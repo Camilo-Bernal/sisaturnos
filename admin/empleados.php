@@ -1,10 +1,10 @@
 <?php
-    require "lib/conexion.php";
-    $user = $_SESSION['email'];
+require "lib/conexion.php";
+$user = $_SESSION['email'];
 
-    if (!isset($user)) {
-        header ( "Location: ../index.php" );
-      }
+if (!isset($user)) {
+    header("Location: ../index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -170,10 +170,10 @@
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">
-                            <?php 
-                                echo "$user";
+                            <?php
+                            echo "$user";
                             ?>
-                        </a> 
+                        </a>
                     </div>
                 </div>
 
@@ -182,7 +182,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
-                        
+
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-table"></i>
@@ -192,18 +192,24 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                            <a href="crearEmpleado.php" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Agregar empleado</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="tables/data.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Editar empleado</p>
-                                </a>
-                            </li>
+                                <li class="nav-item">
+                                    <a href="crearEmpleado.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon text-success"></i>
+                                        <p>Agregar empleado</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="tables/data.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon text-info"></i>
+                                        <p>Editar empleado</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="tables/data.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon text-danger"></i>
+                                        <p>Eliminar empleado</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -276,26 +282,25 @@
                                                 <th>Profesión</th>
                                                 <th>Contrato</th>
                                                 <th>Cargo</th>
-                                                <th>Acciones</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                                //crear una variable con la sentencia SQL
-                                                $sql = "SELECT * FROM empleados";
-                                                // crear la variable para ejecutar la consulta
-                                                $consulta = mysqli_query($miConexion, $sql);
-                                                while ($campos = mysqli_fetch_array($consulta)) {?>
+                                            //crear una variable con la sentencia SQL
+                                            $sql = "SELECT * FROM empleados";
+                                            // crear la variable para ejecutar la consulta
+                                            $consulta = mysqli_query($miConexion, $sql);
+                                            while ($campos = mysqli_fetch_array($consulta)) { ?>
                                                 <tr class="table-secundary">
-                                                    <td><?=$campos['idPersonalAsistencial'];?></td>
-                                                    <td><?=$campos['apellidos'];?></td>
-                                                    <td><?=$campos['nombres'];?></td>
-                                                    <td><?=$campos['telefono'];?></td>
-                                                    <td><?=$campos['idGenero'];?></td>
-                                                    <td><?=$campos['idProfesion'];?></td>
-                                                    <td><?=$campos['idContrato'];?></td>
+                                                    <td><?= $campos['idPersonalAsistencial']; ?></td>
+                                                    <td><?= $campos['apellidos']; ?></td>
+                                                    <td><?= $campos['nombres']; ?></td>
+                                                    <td><?= $campos['telefono']; ?></td>
+                                                    <td><?= $campos['idGenero']; ?></td>
+                                                    <td><?= $campos['idProfesion']; ?></td>
+                                                    <td><?= $campos['idContrato']; ?></td>
                                                 </tr>
-                                            <?php }?>
+                                            <?php } ?>
                                         </tbody>
                                         <tfoot>
                                             <tr>

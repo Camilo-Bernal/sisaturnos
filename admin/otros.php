@@ -1,10 +1,10 @@
 <?php
-    require "lib/conexion.php";
-    $user = $_SESSION['email'];
+require "lib/conexion.php";
+$user = $_SESSION['email'];
 
-    if (!isset($user)) {
-        header ( "Location: ../index.php" );
-      }
+if (!isset($user)) {
+    header("Location: ../index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -166,12 +166,12 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img src="../dist/img/avatar.png" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">
-                            <?php 
-                                echo "$user";
+                            <?php
+                            echo "$user";
                             ?>
                         </a>
                     </div>
@@ -182,7 +182,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
-                        
+
                         <li class="nav-item has-treeview">
                             <a href="empleados.php" class="nav-link ">
                                 <i class="nav-icon fas fa-table"></i>
@@ -209,29 +209,42 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                            <a href="contratos.php" class="nav-link">
-                                <i class="far fa-circle nav-icon text-info"></i>
-                                <p>contratos</p>
-                                </a>
-                            </li>
-                            <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                            <a href="profesiones.php" class="nav-link">
-                                <i class="far fa-circle nav-icon text-info"></i>
-                                <p>profesiones</p>
-                                </a>
-                            </li>
+                                <li class="nav-item">
+                                    <a href="cargos.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon text-info"></i>
+                                        <p>cargos</p>
+                                    </a>
+                                </li>
 
+                                <li class="nav-item">
+                                    <a href="contratos.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon text-info"></i>
+                                        <p>contratos</p>
+                                    </a>
+                                </li>
 
-                            <li class="nav-item">
-                                <a href="tables/data.html" class="nav-link">
-                                <i class="far fa-circle nav-icon text-info"></i>
-                                <p>no hace nada útil</p>
-                                </a>
-                            </li>
-                            </ul>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon text-info"></i>
+                                        <p>géneros</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="profesiones.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon text-info"></i>
+                                        <p>profesiones</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="servicios.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon text-info"></i>
+                                        <p>servicios</p>
+                                    </a>
+                                </li>
                         </li>
+
                         <!-- LABELS -->
                         <li class="nav-header">LABELS</li>
                         <li class="nav-item">

@@ -1,9 +1,9 @@
 <?php
-    require "lib/conexion.php";
-    $user = $_SESSION['email'];
-    if (!isset($user)) {
-        header ( "Location: ../index.php" );
-      }
+require "lib/conexion.php";
+$user = $_SESSION['email'];
+if (!isset($user)) {
+    header("Location: ../index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -169,8 +169,8 @@
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">
-                            <?php 
-                                echo "$user";
+                            <?php
+                            echo "$user";
                             ?>
                         </a>
                     </div>
@@ -207,20 +207,43 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                            <a href="cargos.php" class="nav-link active">
-                                <i class="far fa-circle nav-icon text-info"></i>
-                                <p>Lista de cargos</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="tables/data.html" class="nav-link">
-                                <i class="far fa-circle nav-icon text-info"></i>
-                                <p>no hace nada útil</p>
-                                </a>
-                            </li>
+                                <li class="nav-item">
+                                    <a href="cargos.php" class="nav-link active">
+                                        <i class="far fa-circle nav-icon text-info"></i>
+                                        <p>cargos</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="contratos.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon text-info"></i>
+                                        <p>contratos</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon text-info"></i>
+                                        <p>géneros</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="profesiones.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon text-info"></i>
+                                        <p>profesiones</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="servicios.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon text-info"></i>
+                                        <p>servicios</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
+
                         <!-- LABELS -->
                         <li class="nav-header">LABELS</li>
                         <li class="nav-item">
@@ -254,24 +277,41 @@
                     </div>
                 </div><!-- /.container-fluid -->
             </section>
+
             <!-- Main content -->
-            <div class="card card-body">
-                <div class="row">
-                    <div class="text-center">
-                        <h1 class="text-center">Crear cargo</h1>
-                    </div>
-                </div>    
-                <div class="form-group">
-                    <form action="" method="post">
-                        <div class="mb-1">
-                            <label for="cargos">Escriba aqui un cargo</label><br>
-                            <input type="text" name="cargos" placeholder="cargos" autofocus required>
+            <section class="content center">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-3">
+                            <!-- /.card -->
+                            <div class="card">
+                                <div class="card card-body">
+                                    <div class="row">
+                                        <div class="text-center">
+                                            <h1 class="text-center">Crear cargo</h1>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <form action="" method="post">
+                                            <div class="mb-1">
+                                                <label for="cargos">Cargo</label><br>
+                                                <input type="text" name="cargos" placeholder="nombre del cargo" autofocus required>
+                                            </div>
+                                            <br>
+                                            <input type="submit" name="agregar" class="btn btn-primary" value="Crear">
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
                         </div>
-                                       
-                        <input type="submit" name="agregar" class="btn btn-primary" value="Crear">
-                    </form>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
                 </div>
-            </div>
+                <!-- /.container-fluid -->
+            </section>
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
@@ -298,30 +338,28 @@
     <!-- AdminLTE App -->
     <script src="../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js"></script>    
+    <script src="../dist/js/demo.js"></script>
 </body>
+
 </html>
 <?php
-    //ingresar los valores a la tabla
-    if(isset($_POST['agregar']))
-    {
-        //recibir variables
-        $cargo = $_POST['cargos'];
+//ingresar los valores a la tabla
+if (isset($_POST['agregar'])) {
+    //recibir variables
+    $cargo = $_POST['cargos'];
 
-        // crear una consulata para insertar las variables en la tabla
-        $sql = "INSERT INTO cargos(cargo) VALUES ('$cargo')";
-        $consulta =mysqli_query($miConexion, $sql);
-        if (!$consulta) {
-            die("Consulta no realizada");
-        }
-        else{ 
-            echo '
+    // crear una consulata para insertar las variables en la tabla
+    $sql = "INSERT INTO cargos(cargo) VALUES ('$cargo')";
+    $consulta = mysqli_query($miConexion, $sql);
+    if (!$consulta) {
+        die("Consulta no realizada");
+    } else {
+        echo '
             <script>
                 alert("Cargo creado");
                 window.location = "./cargos.php";
             </script>
         ';
-               
-        }
     }
+}
 ?>
