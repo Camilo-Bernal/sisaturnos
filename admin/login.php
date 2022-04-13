@@ -17,7 +17,7 @@
         echo '
             <script>
                 alert("Datos de acceso icorrectos \nVerifica e intenta nuevamente");
-                window.location = "../index.php";
+                window.location = "../sesion.php";
             </script>
         ';
         exit;

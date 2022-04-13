@@ -3,7 +3,7 @@
     $user = $_SESSION['email'];
 
     if (!isset($user)) {
-        header ( "Location: ../index.php" );
+        header ( "Location: ../sesion.php" );
       }
 ?>
 <!DOCTYPE html>

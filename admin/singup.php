@@ -19,7 +19,7 @@
            window.location = "../index.php";
        </script>
        ';
-       exit();
+       exif();
    }
 
    //verificar que el nombre no se repita en la base de datos
@@ -32,7 +32,7 @@
            window.location = "../index.php";
        </script>
        ';
-       exit();
+       exif();
    }
 
    $ejecutar = mysqli_query($miConexion, $query);

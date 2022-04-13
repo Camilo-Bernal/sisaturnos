@@ -1,10 +1,10 @@
 <?php
-require "lib/conexion.php";
-$user = $_SESSION['email'];
+    require "lib/conexion.php";
+    $user = $_SESSION['email'];
 
-if (!isset($user)) {
-    header("Location: ../index.php");
-}
+    if (!isset($user)) {
+        header ( "Location: ../sesion.php" );
+      }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -170,8 +170,8 @@ if (!isset($user)) {
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">
-                            <?php
-                            echo "$user";
+                            <?php 
+                                echo "$user";
                             ?>
                         </a>
                     </div>
@@ -208,42 +208,20 @@ if (!isset($user)) {
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="cargos.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon text-info"></i>
-                                        <p>cargos</p>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="contratos.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon text-info"></i>
-                                        <p>contratos</p>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon text-info"></i>
-                                        <p>géneros</p>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="profesiones.php" class="nav-link active">
-                                        <i class="far fa-circle nav-icon text-info"></i>
-                                        <p>profesiones</p>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="servicios.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon text-info"></i>
-                                        <p>servicios</p>
-                                    </a>
-                                </li>
+                            <li class="nav-item">
+                            <a href="contratos.php" class="nav-link active">
+                                <i class="far fa-circle nav-icon text-info"></i>
+                                <p>Tipo de contratos</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="tables/data.html" class="nav-link">
+                                <i class="far fa-circle nav-icon text-info"></i>
+                                <p>no hace nada útil</p>
+                                </a>
+                            </li>
+                            </ul>
                         </li>
-
                         <!-- LABELS -->
                         <li class="nav-header">LABELS</li>
                         <li class="nav-item">
@@ -282,13 +260,13 @@ if (!isset($user)) {
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-12">
                             <!-- /.card -->
                             <div class="card">
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    <div class="col-4">
-                                        <a href="./crearProfesion.php" class="btn btn-info">Agregar profesión<i class=""></a>
+                                    <div class="col-3">
+                                        <a href="./crearProfesion.php" class="btn btn-info">Agregar una profesion<i class=""></a>           
                                     </div> <br>
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
@@ -300,29 +278,40 @@ if (!isset($user)) {
                                         </thead>
                                         <tbody>
                                             <?php
-                                            //crear una variable con la sentencia SQL
-                                            $sql = "SELECT * FROM profesion";
-                                            // crear la variable para ejecutar la consulta
-                                            $consulta = mysqli_query($miConexion, $sql);
-                                            while ($campos = mysqli_fetch_array($consulta)) { ?>
+                                                //crear una variable con la sentencia SQL
+                                                $sql = "SELECT * FROM profesion";
+                                                // crear la variable para ejecutar la consulta
+                                                $consulta = mysqli_query($miConexion, $sql);
+                                                while ($campos = mysqli_fetch_array($consulta)) {?>
                                                 <tr class="table-secundary">
-                                                    <td><?= $campos['idProfesion']; ?></td>
-                                                    <td><?= $campos['profesion']; ?></td>
+                                                    <td><?=$campos['idProfesion'];?></td>
+                                                    <td><?=$campos['profesion'];?></td>
                                                     <th>
                                                         <a href="" class="btn btn-info"><i class="fa fa-marker"></i></a>
-                                                        <a href="./eliminarProfesion.php? id=<?= $campos['idProfesion']; ?>" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
+
+                                                        
+                                                        
+                                                        <a href="./eliminarProfesion.php? id=<?= $campos['idProfesion'];?>" class="btn btn-danger"><i class="fa fa-trash-alt"></i>                                                                                      
+                                                        </a>              
+                                                            
+                                                        
+
+                                                        
                                                     </th>
                                                 </tr>
-                                            <?php } ?>
+                                            <?php }?>
                                         </tbody>
                                         <tfoot>
                                             <tr>
                                                 <th>Id</th>
                                                 <th>Profesion</th>
-                                                <th>Acciones</th>
                                             </tr>
                                         </tfoot>
-                                    </table>
+                                    </table> 
+
+                                    
+
+
                                 </div>
                                 <!-- /.card-body -->
                             </div>
@@ -368,17 +357,17 @@ if (!isset($user)) {
 
     <!-- modal script -->
     <script>
-        // Get the modal
-        var modal = document.getElementById('id01');
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
+    // Get the modal
+    var modal = document.getElementById('id01');
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+          if (event.target == modal) {
+                 modal.style.display = "none";
+                   }
+                   }
     </script>
 
-
+    
     <!-- page script -->
     <script>
         $(function() {
@@ -402,19 +391,21 @@ if (!isset($user)) {
 </html>
 
 <?php
-//ingresar los valores a la tabla
-if (isset($_POST['agregar'])) {
-    //recibir variables
-    $profesion = $_POST['profesion'];
+    //ingresar los valores a la tabla
+    if(isset($_POST['agregar']))
+    {
+        //recibir variables
+        $profesion = $_POST['profesion'];
 
-    // crear una consulata para insertar las variables en la tabla
-    $sql = "INSERT INTO contrato(tipoContrato) VALUES ('$profesion')";
-    $consulta = mysqli_query($miConexion, $sql);
-    if (!$consulta) {
-        die("Consulta no realizada");
-    } else {
-        $_SESSION['mensaje'] = "datos registrados";
-        header("Location: ./profesiones.php"); // redirecciona
+        // crear una consulata para insertar las variables en la tabla
+        $sql = "INSERT INTO contrato(tipoContrato) VALUES ('$profesion')";
+        $consulta =mysqli_query($miConexion, $sql);
+        if (!$consulta) {
+            die("Consulta no realizada");
+        }
+        else{
+            $_SESSION['mensaje'] = "datos registrados";
+            header("Location: ./profesiones.php"); // redirecciona
+        }
     }
-}
 ?>

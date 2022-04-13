@@ -1,10 +1,10 @@
 <?php
-require "lib/conexion.php";
-$user = $_SESSION['email'];
+    require "lib/conexion.php";
+    $user = $_SESSION['email'];
 
-if (!isset($user)) {
-    header("Location: ../index.php");
-}
+    if (!isset($user)) {
+        header ( "Location: ../sesion.php" );
+      }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -19,142 +19,79 @@ if (!isset($user)) {
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- DataTables -->
-    <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <style>
+    .color-palette {
+      height: 35px;
+      line-height: 35px;
+      text-align: right;
+      padding-right: .75rem;
+    }
+    
+    .color-palette.disabled {
+      text-align: center;
+      padding-right: 0;
+      display: block;
+    }
+    
+    .color-palette-set {
+      margin-bottom: 15px;
+    }
+
+    .color-palette span {
+      display: none;
+      font-size: 12px;
+    }
+
+    .color-palette:hover span {
+      display: block;
+    }
+
+    .color-palette.disabled span {
+      display: block;
+      text-align: left;
+      padding-left: .75rem;
+    }
+
+    .color-palette-box h4 {
+      position: absolute;
+      left: 1.25rem;
+      margin-top: .75rem;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 12px;
+      display: block;
+      z-index: 7;
+    }
+  </style>
 </head>
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light " style="background-color: #343A40;">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars" style="color:white;"></i></a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block" >
+                    <a href="./inicio.php" class="nav-link" style="color:white;">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
+                    <a href="#" class="nav-link" style="color:white;">Manual</a>
                 </li>
             </ul>
 
-            <!-- SEARCH FORM -->
-            <form class="form-inline ml-3">
-                <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                    <div class="input-group-append">
-                        <button class="btn btn-navbar" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
-
-            <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto">
-                <!-- Messages Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-comments"></i>
-                        <span class="badge badge-danger navbar-badge">3</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-                                <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        Brad Diesel
-                                        <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">Call me whenever you can...</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-                                <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        John Pierce
-                                        <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">I got your message bro</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-                                <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        Nora Silvester
-                                        <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">The subject goes here</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                    </div>
-                </li>
-                <!-- Notifications Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">15</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">15 Notifications</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 4 new messages
-                            <span class="float-right text-muted text-sm">3 mins</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-users mr-2"></i> 8 friend requests
-                            <span class="float-right text-muted text-sm">12 hours</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-file mr-2"></i> 3 new reports
-                            <span class="float-right text-muted text-sm">2 days</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                        <i class="fas fa-th-large"></i>
-                    </a>
-                </li>
-            </ul>
+            
         </nav>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <aside class="main-sidebar sidebar-dark-primary elevation-4" >
             <!-- Brand Logo -->
             <a href="#" class="brand-link">
                 <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -166,12 +103,12 @@ if (!isset($user)) {
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="../dist/img/avatar.png" class="img-circle elevation-2" alt="User Image">
+                        <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">
-                            <?php
-                            echo "$user";
+                            <?php 
+                                echo "$user";
                             ?>
                         </a>
                     </div>
@@ -182,7 +119,7 @@ if (!isset($user)) {
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
-
+                        
                         <li class="nav-item has-treeview">
                             <a href="empleados.php" class="nav-link ">
                                 <i class="nav-icon fas fa-table"></i>
@@ -201,50 +138,13 @@ if (!isset($user)) {
                         </li>
 
                         <li class="nav-item has-treeview">
-                            <a href="otros.php" class="nav-link active">
+                            <a href="otros.php" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>
                                 <p>
-                                    <i class="fas fa-angle-left right"></i>
                                     Otros
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="cargos.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon text-info"></i>
-                                        <p>cargos</p>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="contratos.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon text-info"></i>
-                                        <p>contratos</p>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon text-info"></i>
-                                        <p>géneros</p>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="profesiones.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon text-info"></i>
-                                        <p>profesiones</p>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="servicios.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon text-info"></i>
-                                        <p>servicios</p>
-                                    </a>
-                                </li>
                         </li>
-
                         <!-- LABELS -->
                         <li class="nav-header">LABELS</li>
                         <li class="nav-item">
@@ -260,6 +160,9 @@ if (!isset($user)) {
             <!-- /.sidebar -->
         </aside>
 
+
+        
+
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -267,49 +170,493 @@ if (!isset($user)) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>otros contenidos</h1>
+                            <h1>Inicio</h1>
                         </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="inicio.php">Inicio</a></li>
-                                <li class="breadcrumb-item active">Otros</li>
-                            </ol>
-                        </div>
+                        
                     </div>
                 </div><!-- /.container-fluid -->
             </section>
 
             <!-- Main content -->
-            <h1>No hay nada para msotrar aquí, se sugiere contenido multimedia</h1>
-            <!-- /.content -->
-        </div>
-        <!-- /.content-wrapper -->
-        <footer class="main-footer">
-            <div class="float-right d-none d-sm-block">
-                <b>Version</b> 3.0.5
+            
+
+            <section class="content">
+      <div class="container-fluid">
+        <!-- COLOR PALETTE -->
+        <div class="card card-default color-palette-box">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="fas fa-tag"> &nbsp;</i>
+              Bienvenido a sistema unificado de turnos.
+            </h3>
+          </div>
+          <div class="card-body">
+            <div class="col-12">
+              <h5>Opciones disponibles</h5>
             </div>
-            <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-            reserved.
-        </footer>
+            <!-- /.col-12 -->
+            <div class="row">
 
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
+            <!-- /.col -->
+            <div class="col-sm-4 col-md-2">
+                <h4 class="text-center">Lista de cargos</h4>
+
+                <div class="color-palette-set">
+                  <div class="bg-green color-palette"><span>Entrar</span></div>
+                  <div class="bg-green disabled color-palette"><span>Acceder a lista de cargos</span></div>
+                  
+                </div>
+              
+              
+            </div>
+
+              <!-- /.col -->
+            <div class="col-sm-4 col-md-2">
+                <h4 class="text-center">Lista de contratos</h4>
+
+                <div class="color-palette-set">
+                  <div class="bg-green color-palette"><span>Entrar</span></div>
+                  <div class="bg-green disabled color-palette"><span>Acceder a lista de contratos</span></div>
+                  
+                </div>
+              
+              
+            </div>
+
+
+              <!-- /.col -->
+            <div class="col-sm-4 col-md-2">
+                <h4 class="text-center">Lista de profesiones</h4>
+
+                <div class="color-palette-set">
+                  <div class="bg-green color-palette"><span>Entrar</span></div>
+                  <div class="bg-green disabled color-palette"><span>Acceder a lista de profesiones</span></div>
+                  
+                </div>
+              
+              
+            </div>
+              
+              <!-- /.col -->
+            <div class="col-sm-4 col-md-2">
+                <h4 class="text-center">Lista de servicios</h4>
+
+                <div class="color-palette-set">
+                  <div class="bg-green color-palette"><span>Entrar</span></div>
+                  <div class="bg-green disabled color-palette"><span>Acceder a lista de servicios</span></div>
+                  
+                </div>
+              
+              
+            </div>
+
+             
+            
+            <!-- /.card-body -->
+            
+
+            
+
+            
+
+            
+
+
+            </div>
+        <!-- /.card -->
+        <!-- START ALERTS AND CALLOUTS -->
+        <h5 class="mt-4 mb-2"> &nbsp; &nbsp; &nbsp; Sugerencias</h5>
+
+        <div class="row">
+        <div class="col-md-6">
+            <div class="card card-default">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-bullhorn"> &nbsp;</i>
+                  ¿Que hacen estas opciones?
+                </h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <div class="callout callout-danger">
+                  <h5>Lista de contratos</h5>
+
+                  <p>Aqui podras encontrar los contratos disponibles que puede tener un empleado
+                    </p>
+                </div>
+                <div class="callout callout-info">
+                  <h5>Lista de profesiones</h5>
+
+                  <p>Aqui podras encontrar las profesiones disponibles que puede tener un empleado
+                  </p>
+                </div>
+                <div class="callout callout-warning">
+                  <h5>Lista de cargos</h5>
+
+                  <p>Aqui podras encontrar los cargos disponibles que puede tener un empleado</p>
+                </div>
+                <div class="callout callout-success">
+                  <h5>Insertar servicio</h5>
+
+                  <p>Aqui podras encontrar los servicios disponibles que puede tener un empleado
+                  </p>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          
+          <!-- /.col -->
+
+          <div class="col-md-6">
+            <div class="card card-default">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-bullhorn"></i>
+                  Aqui que agregamos, consejitos del calendario pensaba yo
+                </h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <div class="callout callout-danger">
+                  <h5>¿Dudas cpm los calendarios?</h5>
+
+                  <p>There is a problem that we need to fix. A wonderful serenity has taken possession of my entire
+                    soul,
+                    like these sweet mornings of spring which I enjoy with my whole heart.</p>
+                </div>
+                <div class="callout callout-info">
+                  <h5>I am an info callout!</h5>
+
+                  <p>Follow the steps to continue to payment.</p>
+                </div>
+                <div class="callout callout-warning">
+                  <h5>I am a warning callout!</h5>
+
+                  <p>This is a yellow callout.</p>
+                </div>
+                <div class="callout callout-success">
+                  <h5>I am a success callout!</h5>
+
+                  <p>This is a green callout.</p>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+        <!-- END ALERTS AND CALLOUTS -->
+        <h5 class="mt-4 mb-2">Tabs in Cards</h5>
+
+        
+        <!-- END CUSTOM TABS -->
+        <!-- START PROGRESS BARS -->
+        <h5 class="mt-4 mb-2">Progress Bars</h5>
+
+        
+                <!-- END PROGRESS BARS -->
+
+        <!-- START ACCORDION & CAROUSEL-->
+        
+        <!-- START TYPOGRAPHY -->
+        <h5 class="mt-4 mb-2">Typography</h5>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-text-width"></i>
+                  Headlines
+                </h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <h1>h1. Bootstrap heading</h1>
+
+                <h2>h2. Bootstrap heading</h2>
+
+                <h3>h3. Bootstrap heading</h3>
+                <h4>h4. Bootstrap heading</h4>
+                <h5>h5. Bootstrap heading</h5>
+                <h6>h6. Bootstrap heading</h6>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- ./col -->
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-text-width"></i>
+                  Text Emphasis
+                </h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <p class="lead">Lead to emphasize importance</p>
+
+                <p class="text-success">Text green to emphasize success</p>
+
+                <p class="text-info">Text aqua to emphasize info</p>
+
+                <p class="text-primary">Text light blue to emphasize info (2)</p>
+
+                <p class="text-danger">Text red to emphasize danger</p>
+
+                <p class="text-warning">Text yellow to emphasize warning</p>
+
+                <p class="text-muted">Text muted to emphasize general</p>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- ./col -->
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-text-width"></i>
+                  Primary Block Quotes
+                </h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <blockquote>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                  <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                </blockquote>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- ./col -->
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-text-width"></i>
+                  Secondary Block Quotes
+                </h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body clearfix">
+                <blockquote class="quote-secondary">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                  <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                </blockquote>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- ./col -->
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-text-width"></i>
+                  Unordered List
+                </h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <ul>
+                  <li>Lorem ipsum dolor sit amet</li>
+                  <li>Consectetur adipiscing elit</li>
+                  <li>Integer molestie lorem at massa</li>
+                  <li>Facilisis in pretium nisl aliquet</li>
+                  <li>Nulla volutpat aliquam velit
+                    <ul>
+                      <li>Phasellus iaculis neque</li>
+                      <li>Purus sodales ultricies</li>
+                      <li>Vestibulum laoreet porttitor sem</li>
+                      <li>Ac tristique libero volutpat at</li>
+                    </ul>
+                  </li>
+                  <li>Faucibus porta lacus fringilla vel</li>
+                  <li>Aenean sit amet erat nunc</li>
+                  <li>Eget porttitor lorem</li>
+                </ul>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- ./col -->
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-text-width"></i>
+                  Ordered Lists
+                </h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <ol>
+                  <li>Lorem ipsum dolor sit amet</li>
+                  <li>Consectetur adipiscing elit</li>
+                  <li>Integer molestie lorem at massa</li>
+                  <li>Facilisis in pretium nisl aliquet</li>
+                  <li>Nulla volutpat aliquam velit
+                    <ol>
+                      <li>Phasellus iaculis neque</li>
+                      <li>Purus sodales ultricies</li>
+                      <li>Vestibulum laoreet porttitor sem</li>
+                      <li>Ac tristique libero volutpat at</li>
+                    </ol>
+                  </li>
+                  <li>Faucibus porta lacus fringilla vel</li>
+                  <li>Aenean sit amet erat nunc</li>
+                  <li>Eget porttitor lorem</li>
+                </ol>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- ./col -->
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-text-width"></i>
+                  Unstyled List
+                </h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <ul class="list-unstyled">
+                  <li>Lorem ipsum dolor sit amet</li>
+                  <li>Consectetur adipiscing elit</li>
+                  <li>Integer molestie lorem at massa</li>
+                  <li>Facilisis in pretium nisl aliquet</li>
+                  <li>Nulla volutpat aliquam velit
+                    <ul>
+                      <li>Phasellus iaculis neque</li>
+                      <li>Purus sodales ultricies</li>
+                      <li>Vestibulum laoreet porttitor sem</li>
+                      <li>Ac tristique libero volutpat at</li>
+                    </ul>
+                  </li>
+                  <li>Faucibus porta lacus fringilla vel</li>
+                  <li>Aenean sit amet erat nunc</li>
+                  <li>Eget porttitor lorem</li>
+                </ul>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- ./col -->
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-text-width"></i>
+                  Description
+                </h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <dl>
+                  <dt>Description lists</dt>
+                  <dd>A description list is perfect for defining terms.</dd>
+                  <dt>Euismod</dt>
+                  <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+                  <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+                  <dt>Malesuada porta</dt>
+                  <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+                </dl>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- ./col -->
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-text-width"></i>
+                  Description Horizontal
+                </h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <dl class="row">
+                  <dt class="col-sm-4">Description lists</dt>
+                  <dd class="col-sm-8">A description list is perfect for defining terms.</dd>
+                  <dt class="col-sm-4">Euismod</dt>
+                  <dd class="col-sm-8">Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+                  <dd class="col-sm-8 offset-sm-4">Donec id elit non mi porta gravida at eget metus.</dd>
+                  <dt class="col-sm-4">Malesuada porta</dt>
+                  <dd class="col-sm-8">Etiam porta sem malesuada magna mollis euismod.</dd>
+                  <dt class="col-sm-4">Felis euismod semper eget lacinia</dt>
+                  <dd class="col-sm-8">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
+                    sit amet risus.
+                  </dd>
+                </dl>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- ./col -->
+        </div>
+        <!-- /.row -->
+        <!-- END TYPOGRAPHY -->
+      </div><!-- /.container-fluid -->
+    </section>
+
+
+            <!-- /.content -->
+            </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.0.5
     </div>
-    <!-- ./wrapper -->
+    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    reserved.
+  </footer>
 
-    <!-- jQuery -->
-    <script src="../plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js"></script>
-    <!-- page script -->
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
 
+<!-- jQuery -->
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
 </body>
-
 </html>
