@@ -1,9 +1,9 @@
 <?php
-    require "lib/conexion.php";
-    $user = $_SESSION['email'];
-    if (!isset($user)) {
-        header ( "Location: ../sesion.php" );
-      }
+require "lib/conexion.php";
+$user = $_SESSION['email'];
+if (!isset($user)) {
+    header("Location: ../index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -169,8 +169,8 @@
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">
-                            <?php 
-                                echo "$user";
+                            <?php
+                            echo "$user";
                             ?>
                         </a>
                     </div>
@@ -207,28 +207,55 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                            <a href="profesiones.php" class="nav-link active">
-                                <i class="far fa-circle nav-icon text-info"></i>
-                                <p>Lista de profesiones</p>
+                                <li class="nav-item">
+                                    <a href="cargos.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon text-info"></i>
+                                        <p>cargos</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="contratos.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon text-info"></i>
+                                        <p>contratos</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon text-info"></i>
+                                        <p>géneros</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="profesiones.php" class="nav-link active">
+                                        <i class="far fa-circle nav-icon <li class=" nav-item">
+                                            <a href="tables/data.html" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Editar empleado</p>
+                                            </a>
+                                </li>"></i>
+                                <p>profesiones</p>
                                 </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="tables/data.html" class="nav-link">
-                                <i class="far fa-circle nav-icon text-info"></i>
-                                <p>no hace nada útil</p>
-                                </a>
-                            </li>
-                            </ul>
                         </li>
-                        <!-- LABELS -->
-                        <li class="nav-header">LABELS</li>
+
                         <li class="nav-item">
-                            <a href="lib/logout.php" class="nav-link">
-                                <i class="nav-icon far fa-circle text-danger"></i>
-                                <p>Cerrar Sesión </p>
+                            <a href="servicios.php" class="nav-link">
+                                <i class="far fa-circle nav-icon text-info"></i>
+                                <p>servicios</p>
                             </a>
                         </li>
+                    </ul>
+                    </li>
+                    <!-- LABELS -->
+                    <li class="nav-header">LABELS</li>
+                    <li class="nav-item">
+                        <a href="lib/logout.php" class="nav-link">
+                            <i class="nav-icon far fa-circle text-danger"></i>
+                            <p>Cerrar Sesión </p>
+                        </a>
+                    </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -255,23 +282,39 @@
                 </div><!-- /.container-fluid -->
             </section>
             <!-- Main content -->
-            <div class="card card-body">
-                <div class="row">
-                    <div class="text-center">
-                        <h1 class="text-center"> Agregue una profesion</h1>
-                    </div>
-                </div>    
-                <div class="form-group">
-                    <form action="" method="post">
-                        <div class="mb-1">
-                            <label for="profesion">Profesion</label><br>
-                            <input type="text" name="profesion" placeholder="profesion" autofocus required>
+            <section class="content center">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-4">
+                            <!-- /.card -->
+                            <div class="card">
+                                <div class="card card-body">
+                                    <div class="row">
+                                        <div class="text-center">
+                                            <h1 class="text-center">Crear profesión</h1>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <form action="" method="post">
+                                            <div class="mb-1">
+                                                <label for="profesiones">Profesión</label><br>
+                                                <input type="text" name="profesion" placeholder="nombre de la profesión" autofocus required>
+                                            </div>
+                                            <br>
+                                            <input type="submit" name="agregar" class="btn btn-primary" value="Crear">
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
                         </div>
-                                       
-                        <input type="submit" name="agregar" class="btn btn-primary" value="Crear">
-                    </form>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
                 </div>
-            </div>
+                <!-- /.container-fluid -->
+            </section>
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
@@ -298,30 +341,28 @@
     <!-- AdminLTE App -->
     <script src="../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js"></script>    
+    <script src="../dist/js/demo.js"></script>
 </body>
+
 </html>
 <?php
-    //ingresar los valores a la tabla
-    if(isset($_POST['agregar']))
-    {
-        //recibir variables
-        $profesion = $_POST['profesion'];
+//ingresar los valores a la tabla
+if (isset($_POST['agregar'])) {
+    //recibir variables
+    $profesion = $_POST['profesion'];
 
-        // crear una consulata para insertar las variables en la tabla
-        $sql = "INSERT INTO profesion(profesion) VALUES ('$profesion')";
-        $consulta =mysqli_query($miConexion, $sql);
-        if (!$consulta) {
-            die("Consulta no realizada");
-        }
-        else{ 
-            echo '
+    // crear una consulata para insertar las variables en la tabla
+    $sql = "INSERT INTO profesion(profesion) VALUES ('$profesion')";
+    $consulta = mysqli_query($miConexion, $sql);
+    if (!$consulta) {
+        die("Consulta no realizada");
+    } else {
+        echo '
             <script>
                 alert("Profesion creada ");
                 window.location = "./profesiones.php";
             </script>
         ';
-               
-        }
     }
+}
 ?>

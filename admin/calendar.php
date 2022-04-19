@@ -3,7 +3,7 @@
     $user = $_SESSION['email'];
 
     if (!isset($user)) {
-      header ( "Location: ../sesion.php" );
+      header ( "Location: ../index.php" );
     }
 ?>
 <!DOCTYPE html>
@@ -205,13 +205,13 @@
               <ul class="nav nav-treeview">
               <li class="nav-item">
               <a href="asignarTurno.php" class="nav-link">
-                  <i class="far fa-circle nav-icon text-info"></i>
+                  <i class="far fa-circle nav-icon text-success"></i>
                   <p>Asignar Turnos</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="tables/data.html" class="nav-link">
-                  <i class="far fa-circle nav-icon text-info"></i>
+                  <i class="far fa-circle nav-icon text-danger"></i>
                   <p>no hace nada útil</p>
                 </a>
               </li>           
@@ -276,7 +276,7 @@
                       <div class="external-event bg-success">Mañana</div>
                       <div class="external-event bg-warning">Tarde</div>
                       <div class="external-event bg-info">Noche</div>
-                      <div class="external-event bg-primary">Libren</div>
+                      <div class="external-event bg-primary">Libre</div>
                       <div class="external-event bg-danger">Incapacidad</div>
                       <div class="checkbox">
                         <label for="drop-remove">
