@@ -1,7 +1,6 @@
 <?php
 require "lib/conexion.php";
 $user = $_SESSION['email'];
-
 if (!isset($user)) {
     header("Location: ../index.php");
 }
@@ -69,7 +68,7 @@ if (!isset($user)) {
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                                <img src="../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
                                         Brad Diesel
@@ -85,7 +84,7 @@ if (!isset($user)) {
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                                <img src="../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
                                         John Pierce
@@ -101,7 +100,7 @@ if (!isset($user)) {
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                                <img src="../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
                                         Nora Silvester
@@ -180,11 +179,11 @@ if (!isset($user)) {
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
                         <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
-
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link active">
+                        <li class="nav-item">
+                            <a href="./empleados.php" class="nav-link active">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
                                     <i class="fas fa-angle-left right"></i>
@@ -199,7 +198,7 @@ if (!isset($user)) {
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./editarEmpleado.php" class="nav-link">
+                                    <a href="./editarEmpleado.php" class="nav-link active">
                                         <i class="far fa-circle nav-icon text-info"></i>
                                         <p>Editar empleado</p>
                                     </a>
@@ -220,6 +219,7 @@ if (!isset($user)) {
                                 </p>
                             </a>
                         </li>
+
                         <li class="nav-item has-treeview">
                             <a href="otros.php" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>
@@ -228,6 +228,7 @@ if (!isset($user)) {
                                 </p>
                             </a>
                         </li>
+
                         <!-- LABELS -->
                         <li class="nav-header">LABELS</li>
                         <li class="nav-item">
@@ -250,12 +251,12 @@ if (!isset($user)) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Lista de empleados</h1>
+                            <h1>Actualizar Empleado</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="inicio.php">Inicio</a></li>
-                                <li class="breadcrumb-item active">Empleados</li>
+                                <li class="breadcrumb-item active">Actualizar empleado</li>
                             </ol>
                         </div>
                     </div>
@@ -263,59 +264,161 @@ if (!isset($user)) {
             </section>
 
             <!-- Main content -->
-            <section class="content">
+            <section class="content center">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col">
                             <!-- /.card -->
                             <div class="card">
-                                <!-- /.card-header -->
-                                <div class="card-body">
-                                    <table id="example1" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Identificación</th>
-                                                <th>Apellidos</th>
-                                                <th>Nombres</th>
-                                                <th>Teléfono</th>
-                                                <th>Género</th>
-                                                <th>Profesión</th>
-                                                <th>Contrato</th>
-                                                <th>Cargo</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            //crear una variable con la sentencia SQL
-                                            $sql = "SELECT * FROM empleados";
-                                            // crear la variable para ejecutar la consulta
+                                <div class="card card-body">
+                                    <div class="row">
+                                        <div class="text-center">
+                                            <h1 class="text-center">Actualizar Empleado</h1>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <form action="" method="get">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label for="tipoId">N° de identificación</label><br>
+                                                    <input type="number" name="identificacion" placeholder="empleado a actualizar" required>
+                                                    <input type="submit" name="buscar" class="btn btn-info" value="buscar">
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <br>
+                                        <?php
+                                        //ingresar los valores a la tabla
+                                        if (isset($_GET['buscar'])) {
+                                            $ide = $_GET['identificacion'];
+                                            $sql = "SELECT * FROM personalasistencial WHERE idPersonalAsistencial = $ide";
                                             $consulta = mysqli_query($miConexion, $sql);
-                                            while ($campos = mysqli_fetch_array($consulta)) { ?>
-                                                <tr class="table-secundary">
-                                                    <td><?= $campos['idPersonalAsistencial']; ?></td>
-                                                    <td><?= $campos['apellidos']; ?></td>
-                                                    <td><?= $campos['nombres']; ?></td>
-                                                    <td><?= $campos['telefono']; ?></td>
-                                                    <td><?= $campos['idGenero']; ?></td>
-                                                    <td><?= $campos['idProfesion']; ?></td>
-                                                    <td><?= $campos['idContrato']; ?></td>
-                                                    <td><?= $campos['idCargo']; ?></td>
-                                                </tr>
-                                            <?php } ?>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>Identificación</th>
-                                                <th>Apellidos</th>
-                                                <th>Nombres</th>
-                                                <th>Teléfono</th>
-                                                <th>Género</th>
-                                                <th>Profesión</th>
-                                                <th>Contrato</th>
-                                                <th>Cargo</th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
+                                            $datos = mysqli_fetch_array($consulta);
+
+                                            $sql2 = "SELECT * FROM empleados WHERE idPersonalAsistencial = $ide";
+                                            $consulta2 = mysqli_query($miConexion, $sql2);
+                                            $datos2 = mysqli_fetch_array($consulta2);
+                                        }
+                                        ?>
+                                        <form action="" method="post">
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <label for="tipoId">Tipo</label><br>
+                                                    <select name="tipo" id="">
+                                                        <option><?php echo $datos2['idTipoId']; ?></option>
+                                                        <?php
+                                                        $sql = "SELECT * FROM tipoid";
+                                                        $consulta = mysqli_query($miConexion, $sql);
+                                                        while ($campos = mysqli_fetch_array($consulta)) {
+                                                            $id = $campos['idTipoId'];
+                                                            $tipo = $campos['tipoId'];
+                                                        ?>
+                                                            <option value="<?php echo $id; ?>"><?php echo $tipo; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                                <div class="col-3">
+                                                    <label for="nombre">Nombre</label><br>
+                                                    <input type="text" name="name" value="<?php echo $datos['nombres']; ?>" required>
+                                                </div>
+                                                <div class="col-3">
+                                                    <label for="apellido">Apellido</label><br>
+                                                    <input type="text" name="lastname" value="<?php echo $datos['apellidos']; ?>" required>
+                                                </div>
+                                            </div>
+                                            <br><br>
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <label for="telefono">Teléfono</label><br>
+                                                    <input type="number" name="phone" value="<?php echo $datos['telefono']; ?>" required>
+                                                </div>
+                                                <div class="col-3">
+                                                    <label for="correo">Correo (opcional)</label>
+                                                    <input type="text" name="email" value="<?php echo $datos['correoElectronico']; ?>">
+                                                </div>
+                                                <div class="col-3">
+                                                    <label for="contrato">Tipo de contrato</label><br>
+                                                    <select name="cont">
+                                                        <option><?php echo $datos2['idContrato']; ?></option>
+                                                        <?php
+                                                        $sql = "SELECT * FROM contrato";
+                                                        $consulta = mysqli_query($miConexion, $sql);
+                                                        while ($campos = mysqli_fetch_array($consulta)) {
+                                                            $id = $campos['idContrato'];
+                                                            $contrato = $campos['tipoContrato'];
+                                                        ?>
+                                                            <option value="<?php echo $id; ?>"><?php echo $contrato; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                                <div class="col-3">
+                                                    <label for="nomina">Valor nómina</label><br>
+                                                    <select name="nomin">
+                                                        <option><?php echo $datos2['idNomina']; ?></option>
+                                                        <?php
+                                                        $sql = "SELECT * FROM nomina";
+                                                        $consulta = mysqli_query($miConexion, $sql);
+                                                        while ($campos = mysqli_fetch_array($consulta)) {
+                                                            $id = $campos['idNomina'];
+                                                            $nomina = $campos['valorNomina'];
+                                                        ?>
+                                                            <option value="<?php echo $id; ?>"><?php echo $nomina; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <br><br>
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <label for="genero">Género</label><br>
+                                                    <select name="sexo" id="">
+                                                        <option><?php echo $datos2['idGenero']; ?></option>
+                                                        <?php
+                                                        $sql = "SELECT * FROM genero";
+                                                        $consulta = mysqli_query($miConexion, $sql);
+                                                        while ($campos = mysqli_fetch_array($consulta)) {
+                                                            $id = $campos['idGenero'];
+                                                            $genero = $campos['genero'];
+                                                        ?>
+                                                            <option value="<?php echo $id; ?>"><?php echo $genero; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                                <div class="col-3">
+                                                    <label for="profesion">Profesión</label><br>
+                                                    <select name="profession" id="">
+                                                        <option><?php echo $datos2['idProfesion']; ?></option>
+                                                        <?php
+                                                        $sql = "SELECT * FROM profesion";
+                                                        $consulta = mysqli_query($miConexion, $sql);
+                                                        while ($campos = mysqli_fetch_array($consulta)) {
+                                                            $id = $campos['idProfesion'];
+                                                            $profesion = $campos['profesion'];
+                                                        ?>
+                                                            <option value="<?php echo $id; ?>"><?php echo $profesion; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                                <div class="col-3">
+                                                    <label for="cargo">Cargo</label><br>
+                                                    <select name="rol" id="">
+                                                        <option><?php echo $datos2['idCargo']; ?></option>
+                                                        <?php
+                                                        $sql = "SELECT * FROM cargos";
+                                                        $consulta = mysqli_query($miConexion, $sql);
+                                                        while ($campos = mysqli_fetch_array($consulta)) {
+                                                            $id = $campos['idCargo'];
+                                                            $cargo = $campos['cargo'];
+                                                        ?>
+                                                            <option value="<?php echo $id; ?>"><?php echo $cargo; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <input type="submit" name="actualizar" class="btn btn-primary" value="Actualizar">
+                                        </form>
+                                    </div>
                                 </div>
                                 <!-- /.card-body -->
                             </div>
@@ -350,33 +453,51 @@ if (!isset($user)) {
     <script src="../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- DataTables -->
-    <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
-    <!-- page script -->
-    <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "autoWidth": false,
-            });
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-        });
-    </script>
 </body>
 
 </html>
+<?php
+//ingresar los valores a la tabla
+if (isset($_POST['actualizar'])) {
+    //recibir variables
+    $tipoId = $_POST['tipo'];
+    $nombre = $_POST['name'];
+    $apellido = $_POST['lastname'];
+    $telefono = $_POST['phone'];
+    $correo = $_POST['email'];
+    $contrato = $_POST['cont'];
+    $nomina = $_POST['nomin'];
+    $genero = $_POST['sexo'];
+    $profesion = $_POST['profession'];
+    $cargo = $_POST['rol'];
+
+    // crear una consulta para insertar las variables en la tabla
+    $sql = "UPDATE personalasistencial 
+            SET idTipoId=$tipoId, nombres='$nombre', apellidos='$apellido', telefono ='$telefono',
+                correoElectronico='$correo', idContrato='$contrato', idNomina='$nomina', idGenero='$genero',
+                idProfesion='$profesion',idCargo='$cargo'
+            WHERE idPersonalAsistencial = '$ide'";
+
+    $consulta = mysqli_query($miConexion, $sql);
+    if (!$consulta) {
+        echo '
+            <script>
+                alert("Error\nVerifica e inenta nuevamente");
+            </script>
+        ';
+        die(mysqli_error($miConexion));
+        /*  echo $ide; */
+    } else {
+        echo '
+            <script>
+                alert("Se actualizó al empleado correctamente");
+                window.location = "./empleados.php";
+            </script>
+        ';
+    }
+}
+?>
