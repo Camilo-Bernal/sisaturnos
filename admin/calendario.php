@@ -19,6 +19,9 @@ if (!isset($user)) {
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
@@ -163,7 +166,7 @@ if (!isset($user)) {
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img src="../dist/img/avatar.png" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">
@@ -178,10 +181,10 @@ if (!isset($user)) {
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+                        with font-awesome or any other icon font library -->
 
                         <li class="nav-item has-treeview">
-                            <a href="empleados.php" class="nav-link">
+                            <a href="empleados.php" class="nav-link ">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
                                     Empleados
@@ -189,40 +192,57 @@ if (!isset($user)) {
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="calendario.php" class="nav-link active">
+                            <a href="calendar.php" class="nav-link">
                                 <i class="nav-icon far fa-calendar-alt"></i>
                                 <p>
+                                    Calendario
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item has-treeview">
+                            <a href="otros.php" class="nav-link active">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>
                                     <i class="fas fa-angle-left right"></i>
-                                    Asignacion de turnos
+                                    Otros
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="asignarTurno.php" class="nav-link active">
+                                    <a href="cargos.php" class="nav-link">
                                         <i class="far fa-circle nav-icon text-info"></i>
-                                        <p>Planta Permanente</p>
+                                        <p>cargos</p>
                                     </a>
                                 </li>
+
                                 <li class="nav-item">
-                                    <a href="tables/data.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Planta Temporal</p>
+                                    <a href="contratos.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon text-info"></i>
+                                        <p>contratos</p>
                                     </a>
                                 </li>
+
                                 <li class="nav-item">
-                                    <a href="tables/data.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>OPS-SAS</p>
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon text-info"></i>
+                                        <p>géneros</p>
                                     </a>
                                 </li>
-                            </ul>
-                        <li class="nav-item has-treeview">
-                            <a href="otros.php" class="nav-link">
-                                <i class="nav-icon fas fa-edit"></i>
-                                <p>
-                                    Otros
-                                </p>
-                            </a>
+
+                                <li class="nav-item">
+                                    <a href="profesiones.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon text-info"></i>
+                                        <p>profesiones</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="servicios.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon text-info"></i>
+                                        <p>servicios</p>
+                                    </a>
+                                </li>
                         </li>
 
                         <!-- LABELS -->
@@ -247,12 +267,12 @@ if (!isset($user)) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Asignación de Turnos</h1>
+                            <h1>otros contenidos</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="inicio.php">Inicio</a></li>
-                                <li class="breadcrumb-item active">Asignar turnos</li>
+                                <li class="breadcrumb-item active">Otros</li>
                             </ol>
                         </div>
                     </div>
@@ -260,91 +280,7 @@ if (!isset($user)) {
             </section>
 
             <!-- Main content -->
-            <section class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <!-- /.card -->
-                            <div class="card">
-                                <!-- /.card-header -->
-                                <div class="card-body">
-                                    <div class="container">
-                                        <br />
-
-                                        <div class="col-3">
-                                            <label for="profesion">Profesión</label><br>
-                                            <select name="profesionn" id="">
-                                                <option>seleccionar</option>
-
-                                                <?php
-                                                $sql = "SELECT * FROM profesion";
-                                                $consulta = mysqli_query($miConexion, $sql);
-                                                while ($campos = mysqli_fetch_array($consulta)) {
-                                                    $id = $campos['idProfesion'];
-                                                    $profesion = $campos['profesion'];
-                                                ?>
-                                                    <option value="<?php echo $id; ?>"><?php echo $profesion; ?></option>
-                                                <?php } ?>
-                                            </select>
-                                            <input type="submit" name="buscar" class="btn btn-info" value="buscar">
-                                        </div>
-                                        <hr />
-                                        <br />
-                                        <div class="row mb-3">
-                                            <h3>PARAMETRIZACIÓN</h3>
-                                        </div>
-                                        <table id="example1" class="table table-bordered table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>Identificación</th>
-                                                    <th>Nombres</th>
-                                                    <th>Apellidos</th>
-                                                    <th>Profesión</th>
-                                                    <th>Cargo</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php
-                                                //crear una variable con la sentencia SQL
-                                                if (isset($_GET['buscar'])) {
-                                                    $profess = $_GET['profesionn'];
-                                                    $sql = "SELECT * FROM empleados WHERE idProfesion = '$profess'";
-                                                    // crear la variable para ejecutar la consulta
-                                                    $consulta = mysqli_query($miConexion, $sql);
-                                                    while ($campos = mysqli_fetch_array($consulta)) { ?>
-                                                        <tr class="table-secundary">
-                                                            <td><?= $campos['idPersonalAsistencial']; ?></td>
-                                                            <td><?= $campos['nombres']; ?></td>
-                                                            <td><?= $campos['apellidos']; ?></td>
-                                                            <td><?= $campos['idProfesion']; ?></td>
-                                                            <td><?= $campos['idCargo']; ?></td>
-                                                        </tr>
-                                                <?php }
-                                                } ?>
-                                            </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>Identificación</th>
-                                                    <th>Nombres</th>
-                                                    <th>Apellidos</th>
-                                                    <th>Profesión</th>
-                                                    <th>Cargo</th>
-                                                </tr>
-                                            </tfoot>
-                                        </table>
-
-                                    </div>
-                                </div>
-                                <!-- /.card-body -->
-                            </div>
-                            <!-- /.card -->
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
-                </div>
-                <!-- /.container-fluid -->
-            </section>
+            <h1>No hay nada para msotrar aquí, se sugiere contenido multimedia</h1>
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
@@ -363,6 +299,17 @@ if (!isset($user)) {
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
+
+    <!-- jQuery -->
+    <script src="../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../dist/js/demo.js"></script>
+    <!-- page script -->
+
 </body>
 
 </html>
