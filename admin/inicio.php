@@ -72,125 +72,23 @@ if (!isset($user)) {
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light" style="background-color: #343A40;">
       <!-- Left navbar links -->
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars" style="color: white;"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="./inicio.php" class="nav-link">Home</a>
+          <a href="./inicio.php" class="nav-link" style="color: white;">Inicio</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">Contact</a>
+          <a href="manual.php" class="nav-link" style="color: white;">Manual</a>
         </li>
       </ul>
 
-      <!-- SEARCH FORM -->
-      <form class="form-inline ml-3">
-        <div class="input-group input-group-sm">
-          <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-navbar" type="submit">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-        </div>
-      </form>
+      
 
-      <!-- Right navbar links -->
-      <ul class="navbar-nav ml-auto">
-        <!-- Messages Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-comments"></i>
-            <span class="badge badge-danger navbar-badge">3</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    Brad Diesel
-                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">Call me whenever you can...</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    John Pierce
-                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">I got your message bro</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    Nora Silvester
-                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">The subject goes here</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-          </div>
-        </li>
-        <!-- Notifications Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-bell"></i>
-            <span class="badge badge-warning navbar-badge">15</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-item dropdown-header">15 Notifications</span>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> 4 new messages
-              <span class="float-right text-muted text-sm">3 mins</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-users mr-2"></i> 8 friend requests
-              <span class="float-right text-muted text-sm">12 hours</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-file mr-2"></i> 3 new reports
-              <span class="float-right text-muted text-sm">2 days</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-            <i class="fas fa-th-large"></i>
-          </a>
-        </li>
-      </ul>
+      
     </nav>
     <!-- /.navbar -->
 
@@ -225,7 +123,7 @@ if (!isset($user)) {
                         with font-awesome or any other icon font library -->
 
             <li class="nav-item has-treeview">
-              <a href="./empleados.php" class="nav-link ">
+              <a href="empleados.php" class="nav-link ">
                 <i class="nav-icon fas fa-table"></i>
                 <p>
                   Empleados
@@ -233,16 +131,33 @@ if (!isset($user)) {
               </a>
             </li>
             <li class="nav-item">
-              <a href="./calendario.php" class="nav-link">
+              <a href="calendar.php" class="nav-link">
                 <i class="nav-icon far fa-calendar-alt"></i>
                 <p>
-                  Asignar Turnos
+                  Calendario
+                </p>
+              </a>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="recargos.php" class="nav-link">
+                <i class="nav-icon fas fa-clock"></i>
+                <p>
+                  Recargos
                 </p>
               </a>
             </li>
 
             <li class="nav-item has-treeview">
-              <a href="./otros.php" class="nav-link">
+              <a href="reportes.php" class="nav-link">
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                  Reportes
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item has-treeview">
+              <a href="otros.php" class="nav-link">
                 <i class="nav-icon fas fa-edit"></i>
                 <p>
                   Otros
@@ -250,9 +165,9 @@ if (!isset($user)) {
               </a>
             </li>
             <!-- LABELS -->
-            <li class="nav-header">LABELS</li>
+            <li class="nav-header">Sesion</li>
             <li class="nav-item">
-              <a href="./lib/logout.php" class="nav-link">
+              <a href="lib/logout.php" class="nav-link">
                 <i class="nav-icon far fa-circle text-danger"></i>
                 <p>Cerrar Sesión </p>
               </a>
@@ -271,12 +186,12 @@ if (!isset($user)) {
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>otros contenidos</h1>
+              <h1>&nbsp; Inicio</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-                <li class="breadcrumb-item active">Otros</li>
+                <li class="breadcrumb-item"><a href="#">Inicio &nbsp; </a></li>
+                
               </ol>
             </div>
           </div>
@@ -292,221 +207,111 @@ if (!isset($user)) {
           <div class="card card-default color-palette-box">
             <div class="card-header">
               <h3 class="card-title">
-                <i class="fas fa-tag"></i>
-                Color Palette
+                <i class="fas fa-tag"></i> &nbsp;
+                Bienvenido a sistema unificado de turnos
               </h3>
             </div>
             <div class="card-body">
               <div class="col-12">
-                <h5>Theme Colors</h5>
+                <h5>Opciones en el sistema </h5>
               </div>
               <!-- /.col-12 -->
               <div class="row">
+
                 <div class="col-sm-4 col-md-2">
-                  <h4 class="text-center">Primary</h4>
+                  <h4 class="text-center">Lista de empleados</h4>
 
                   <div class="color-palette-set">
-                    <div class="bg-primary color-palette"><span>#007bff</span></div>
-                    <div class="bg-primary disabled color-palette"><span>Disabled</span></div>
+                    <div class="bg-olive color-palette"><a href="empleados.php"><span>Entrar</span></a></div>
+                    <div class="bg-olive disabled color-palette"><span>Acceder a lista empleados</span></div>
                   </div>
                 </div>
+
+                
                 <!-- /.col -->
                 <div class="col-sm-4 col-md-2">
-                  <h4 class="text-center">Secondary</h4>
+                  <h4 class="text-center">Asignacion de calendarios</h4>
 
                   <div class="color-palette-set">
-                    <div class="bg-secondary color-palette"><span>#6c757d</span></div>
-                    <div class="bg-secondary disabled color-palette"><span>Disabled</span></div>
+                    <div class="bg-olive color-palette"><a href="calendar.php"><span>Entrar</span></a></div>
+                    <div class="bg-olive disabled color-palette"></a><span>Acceder a calendarios</span></div>
                   </div>
                 </div>
+
                 <!-- /.col -->
                 <div class="col-sm-4 col-md-2">
-                  <h4 class="text-center">Info</h4>
+                  <h4 class="text-center">Seccion de recargos</h4>
 
                   <div class="color-palette-set">
-                    <div class="bg-info color-palette"><span>#17a2b8</span></div>
-                    <div class="bg-info disabled color-palette"><span>Disabled</span></div>
+                    <div class="bg-olive color-palette"><a href="recargos.php"><span>Entrar</span></a></div>
+                    <div class="bg-olive disabled color-palette"><span>Acceder a recargos de empleados</span></div>
                   </div>
                 </div>
+
                 <!-- /.col -->
                 <div class="col-sm-4 col-md-2">
-                  <h4 class="text-center">Success</h4>
+                  <h4 class="text-center ">Seccion de reportes</h4>
 
                   <div class="color-palette-set">
-                    <div class="bg-success color-palette"><span>#28a745</span></div>
-                    <div class="bg-success disabled color-palette"><span>Disabled</span></div>
+                    <div class="bg-olive color-palette" ><a href="reportes.php"><span >Entrar</span></a></div>
+                    <div class="bg-olive disabled color-palette"><span>  Acceder a reportes de asignacion</span></div>
                   </div>
                 </div>
-                <!-- /.col -->
-                <div class="col-sm-4 col-md-2">
-                  <h4 class="text-center bg-warning">Warning</h4>
 
-                  <div class="color-palette-set">
-                    <div class="bg-warning color-palette"><span>#ffc107</span></div>
-                    <div class="bg-warning disabled color-palette"><span>Disabled</span></div>
-                  </div>
-                </div>
+                
                 <!-- /.col -->
-                <div class="col-sm-4 col-md-2">
-                  <h4 class="text-center">Danger</h4>
+              </div>      
+              
 
-                  <div class="color-palette-set">
-                    <div class="bg-danger color-palette"><span>#dc3545</span></div>
-                    <div class="bg-danger disabled color-palette"><span>Disabled</span></div>
-                  </div>
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
+              
               <div class="col-12">
-                <h5 class="mt-3">Black/White Nuances</h5>
+                <h5>Opciones adicionales </h5>
               </div>
+
+              
               <!-- /.col-12 -->
               <div class="row">
+                
                 <div class="col-sm-4 col-md-2">
-                  <h4 class="text-center">Black</h4>
+                  <h4 class="text-center">Lista de cargos</h4>
 
                   <div class="color-palette-set">
-                    <div class="bg-black color-palette"><span>#000000</span></div>
-                    <div class="bg-black disabled color-palette"><span>Disabled</span></div>
+                    <div class="bg-lightblue color-palette"><a href="cargos.php"><span>Entrar</span></a></div>
+                    <div class="bg-lightblue disabled color-palette"><span>Lista de cargos</span></div>
                   </div>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 col-md-2">
-                  <h4 class="text-center">Gray Dark</h4>
+                  <h4 class="text-center">lista de contratos</h4>
 
                   <div class="color-palette-set">
-                    <div class="bg-gray-dark color-palette"><span>#343a40</span></div>
-                    <div class="bg-gray-dark disabled color-palette"><span>Disabled</span></div>
+                    <div class="bg-lightblue color-palette"><a href="contratos.php"><span>Entrar</span></a></div>
+                    <div class="bg-lightblue disabled color-palette"><span>Lista de contratos</span></div>
                   </div>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 col-md-2">
-                  <h4 class="text-center">Gray</h4>
+                  <h4 class="text-center">lista de profesiones</h4>
 
                   <div class="color-palette-set">
-                    <div class="bg-gray color-palette"><span>#adb5bd</span></div>
-                    <div class="bg-gray disabled color-palette"><span>Disabled</span></div>
+                    <div class="bg-lightblue color-palette"><a href="profesiones.php"><span>Entrar</span></a></div>
+                    <div class="bg-lightblue disabled color-palette"><span>Lista de profesiones</span></div>
                   </div>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 col-md-2">
-                  <h4 class="text-center bg-light">Light</h4>
+                  <h4 class="text-center ">lista de servicios</h4>
 
                   <div class="color-palette-set">
-                    <div class="bg-light color-palette"><span>#1f2d3d</span></div>
-                    <div class="bg-light disabled color-palette"><span>Disabled</span></div>
-                  </div>
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-              <div class="col-12">
-                <h5 class="mt-3">Colors</h5>
-              </div>
-              <!-- /.col-12 -->
-              <div class="row">
-                <div class="col-sm-4 col-md-2">
-                  <h4 class="text-center bg-indigo">Indigo</h4>
-
-                  <div class="color-palette-set">
-                    <div class="bg-indigo color-palette"><span>#6610f2</span></div>
-                    <div class="bg-indigo disabled color-palette"><span>Disabled</span></div>
-                  </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-4 col-md-2">
-                  <h4 class="text-center bg-lightblue">Lightblue</h4>
-
-                  <div class="color-palette-set">
-                    <div class="bg-lightblue color-palette"><span>#3c8dbc</span></div>
-                    <div class="bg-lightblue disabled color-palette"><span>Disabled</span></div>
-                  </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-4 col-md-2">
-                  <h4 class="text-center bg-navy">Navy</h4>
-
-                  <div class="color-palette-set">
-                    <div class="bg-navy color-palette"><span>#001f3f</span></div>
-                    <div class="bg-navy disabled color-palette"><span>Disabled</span></div>
-                  </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-4 col-md-2">
-                  <h4 class="text-center bg-purple">Purple</h4>
-
-                  <div class="color-palette-set">
-                    <div class="bg-purple color-palette"><span>#605ca8</span></div>
-                    <div class="bg-purple disabled color-palette"><span>Disabled</span></div>
-                  </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-4 col-md-2">
-                  <h4 class="text-center bg-fuchsia">Fuchsia</h4>
-
-                  <div class="color-palette-set">
-                    <div class="bg-fuchsia color-palette"><span>#f012be</span></div>
-                    <div class="bg-fuchsia disabled color-palette"><span>Disabled</span></div>
-                  </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-4 col-md-2">
-                  <h4 class="text-center bg-pink">Pink</h4>
-
-                  <div class="color-palette-set">
-                    <div class="bg-pink color-palette"><span>#e83e8c</span></div>
-                    <div class="bg-pink disabled color-palette"><span>Disabled</span></div>
-                  </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-4 col-md-2">
-                  <h4 class="text-center bg-maroon">Maroon</h4>
-
-                  <div class="color-palette-set">
-                    <div class="bg-maroon color-palette"><span>#d81b60</span></div>
-                    <div class="bg-maroon disabled color-palette"><span>Disabled</span></div>
-                  </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-4 col-md-2">
-                  <h4 class="text-center bg-orange">Orange</h4>
-
-                  <div class="color-palette-set">
-                    <div class="bg-orange color-palette"><span>#ff851b</span></div>
-                    <div class="bg-orange disabled color-palette"><span>Disabled</span></div>
-                  </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-4 col-md-2">
-                  <h4 class="text-center bg-lime">Lime</h4>
-
-                  <div class="color-palette-set">
-                    <div class="bg-lime color-palette"><span>#01ff70</span></div>
-                    <div class="bg-lime disabled color-palette"><span>Disabled</span></div>
-                  </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-4 col-md-2">
-                  <h4 class="text-center bg-teal">Teal</h4>
-
-                  <div class="color-palette-set">
-                    <div class="bg-teal color-palette"><span>#39cccc</span></div>
-                    <div class="bg-teal disabled color-palette"><span>Disabled</span></div>
-                  </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-4 col-md-2">
-                  <h4 class="text-center bg-olive">Olive</h4>
-
-                  <div class="color-palette-set">
-                    <div class="bg-olive color-palette"><span>#3d9970</span></div>
-                    <div class="bg-olive disabled color-palette"><span>Disabled</span></div>
+                    <div class="bg-lightblue color-palette"><a href="servicios.php"><span>Entrar</span></a></div>
+                    <div class="bg-lightblue disabled color-palette"><span>Lista de servicios</span></div>
                   </div>
                 </div>
                 <!-- /.col -->
               </div>
-              <!-- /.row -->
+              
+              
+              
             </div>
             <!-- /.card-body -->
           </div>
@@ -1230,9 +1035,9 @@ if (!isset($user)) {
     <!-- /.content-wrapper -->
     <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
-        <b>Version</b> 3.0.5
+        <b></b> 
       </div>
-      <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+      <strong> &copy;  <a href="http://adminlte.io">Universidad Mariana</a>.</strong>
       reserved.
     </footer>
 

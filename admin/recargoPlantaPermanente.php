@@ -190,12 +190,13 @@ if (!isset($user)) {
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>&nbsp; Opciones adicionales</h1>
+              <h1>&nbsp; Lista de recargos planta permanente</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="otros.php">Otros &nbsp; </a></li>
+                
                 <li class="breadcrumb-item"><a href="inicio.php">Inicio &nbsp; </a></li>
+                <li class="breadcrumb-item"><a href="recargos.php">Recargos &nbsp; </a></li>
                 
               </ol>
             </div>
@@ -213,76 +214,97 @@ if (!isset($user)) {
             <div class="card-header">
               <h3 class="card-title">
                 <i class="fas fa-tag"></i> &nbsp;
-                Listas adicionales para el funcionamiento de sistema unificado de turnos
+                Listas de recargos para empleados con contrato de  planta permanente
               </h3>
             </div>
             <div class="card-body">
-              <div class="col-12">
-                <h5>Opciones  </h5>
-              </div>        
-              <!-- /.col-12 -->
-              <div class="row">
+
+            
+            <label for="tipoContrato"> Elige un servicio</label>  <br>
+                    <select name="tipoContrato" id="tipoContrato">
+                        <option value="neuro"> medicina1</option>
+                        <option value="prueba"> medicina2</option>
+                        <option value="Otra"> medicina3</option>
+                    </select>
+                    <br>
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- /.card -->
+                            <div class="card">
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Identificación</th>
+                                                <th>Mes</th>
+                                                <th>Noche Ordinaria</th>
+                                                <th>Noche Dominical</th>
+                                                <th>Noche Festiva</th>
+                                                <th>Dia Dominical</th>
+                                                <th>Dia Festivo</th>
+                                                <th>Valor de recargo</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            //crear una variable con la sentencia SQL
+                                            $sql = "SELECT * FROM empleados";
+                                            // crear la variable para ejecutar la consulta
+                                            $consulta = mysqli_query($miConexion, $sql);
+                                            while ($campos = mysqli_fetch_array($consulta)) { ?>
+                                                <tr class="table-secundary">
+                                                    <td><?= $campos['idPersonalAsistencial']; ?></td>
+                                                    <td><?= $campos['apellidos']; ?></td>
+                                                    <td><?= $campos['nombres']; ?></td>
+                                                    <td><?= $campos['telefono']; ?></td>
+                                                    <td><?= $campos['idGenero']; ?></td>
+                                                    <td><?= $campos['idProfesion']; ?></td>
+                                                    <td><?= $campos['idContrato']; ?></td>
+                                                    <td><?= $campos['idCargo']; ?></td>
+                                                </tr>
+                                            <?php } ?>
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                                <th>Identificación</th>
+                                                <th>Mes</th>
+                                                <th>Noche Ordinaria</th>
+                                                <th>Noche Dominical</th>
+                                                <th>Noche Festiva</th>
+                                                <th>Dia Dominical</th>
+                                                <th>Dia Festivo</th>
+                                                <th>Valor de recargo</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+                    
+              
+              
                 
-                <div class="col-sm-4 col-md-2">
-                  <h4 class="text-center">Lista de cargos</h4>
-
-                  <div class="color-palette-set">
-                    <div class="bg-lightblue color-palette"><a href="cargos.php"><span>Entrar</span></a></div>
-                    <div class="bg-lightblue disabled color-palette"><span>Lista de cargos</span></div>
-                  </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-4 col-md-2">
-                  <h4 class="text-center">lista de contratos</h4>
-
-                  <div class="color-palette-set">
-                    <div class="bg-lightblue color-palette"><a href="contratos.php"><span>Entrar</span></a></div>
-                    <div class="bg-lightblue disabled color-palette"><span>Lista de contratos</span></div>
-                  </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-4 col-md-2">
-                  <h4 class="text-center">lista de profesiones</h4>
-
-                  <div class="color-palette-set">
-                    <div class="bg-lightblue color-palette"><a href="profesiones.php"><span>Entrar</span></a></div>
-                    <div class="bg-lightblue disabled color-palette"><span>Lista de profesiones</span></div>
-                  </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-4 col-md-2">
-                  <h4 class="text-center ">lista de servicios</h4>
-
-                  <div class="color-palette-set">
-                    <div class="bg-lightblue color-palette"><a href="servicios.php"><span>Entrar</span></a></div>
-                    <div class="bg-lightblue disabled color-palette"><span>Lista de servicios</span></div>
-                  </div>
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /row -->
+                
               
-              
-              
+    
             </div>
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
-          
-          
-
-         
-         
-
-          
-          
-
-          
-
-         
-
-        
-         
         </div><!-- /.container-fluid -->
       </section>
 

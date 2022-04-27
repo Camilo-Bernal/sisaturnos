@@ -14,6 +14,6 @@
         die("Consulta no realizada");
     }
     else{
-        header("Location: ./cargos.php"); // redirecciona
+        header("Location: cargos.php"); // redirecciona
     }
 ?>
