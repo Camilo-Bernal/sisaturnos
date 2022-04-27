@@ -53,7 +53,7 @@ CREATE TABLE `empleados` (
 	`idPersonalAsistencial` INT(10) NOT NULL,
 	`nombres` VARCHAR(45) NOT NULL COLLATE 'utf8mb4_general_ci',
 	`apellidos` VARCHAR(45) NOT NULL COLLATE 'utf8mb4_general_ci',
-	`telefono` FLOAT NOT NULL,
+	`telefono` varchar(10) NOT NULL,
 	`correoElectronico` VARCHAR(50) NULL COLLATE 'utf8mb4_general_ci',
 	`idContrato` VARCHAR(40) NOT NULL COLLATE 'utf8mb4_general_ci',
 	`idNomina` DOUBLE NOT NULL,
@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `personalasistencial` (
   `idPersonalAsistencial` int(10) NOT NULL,
   `nombres` varchar(45) NOT NULL,
   `apellidos` varchar(45) NOT NULL,
-  `telefono` float NOT NULL,
+  `telefono` varchar(10) NOT NULL,
   `correoElectronico` varchar(50) DEFAULT NULL,
   `idContrato` int(11) NOT NULL,
   `idNomina` int(11) NOT NULL,
@@ -239,13 +239,6 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `password` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
-
--- Volcando datos para la tabla suturno.usuarios: ~2 rows (aproximadamente)
-/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` (`id`, `name`, `user`, `email`, `password`) VALUES
-	(1, 'Jesús Camilo Bernal', 'camilo ', 'cabe0320@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055'),
-	(2, 'Camilo Bernal', 'jesús', 'jesbernal@umariana.edu.co', '81dc9bdb52d04dc20036dbd8313ed055');
-/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 -- Volcando estructura para vista suturno.empleados
 -- Eliminando tabla temporal y crear estructura final de VIEW

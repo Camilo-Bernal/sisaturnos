@@ -19,9 +19,6 @@ if (!isset($user)) {
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- DataTables -->
-    <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
@@ -182,6 +179,7 @@ if (!isset($user)) {
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
+
                         <li class="nav-item has-treeview">
                             <a href="./empleados.php" class="nav-link ">
                                 <i class="nav-icon fas fa-table"></i>
@@ -190,65 +188,50 @@ if (!isset($user)) {
                                 </p>
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a href="./calendario.php" class="nav-link">
+                            <a href="./calendario.php" class="nav-link active">
                                 <i class="nav-icon far fa-calendar-alt"></i>
                                 <p>
-                                    Asignar Turnos
-                                </p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item has-treeview">
-                            <a href="./otros.php" class="nav-link active">
-                                <i class="nav-icon fas fa-edit"></i>
-                                <p>
                                     <i class="fas fa-angle-left right"></i>
-                                    Otros
+                                    Asignar Turnos
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./cargos.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon text-info"></i>
-                                        <p>cargos</p>
+                                    <a href="./planta_permanente.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon text-success"></i>
+                                        <p>Planta Permanente</p>
                                     </a>
                                 </li>
-
                                 <li class="nav-item">
-                                    <a href="./contratos.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon text-info"></i>
-                                        <p>contratos</p>
+                                    <a href="./planta_temporal.php" class="nav-link active">
+                                        <i class="far fa-circle nav-icon text-success"></i>
+                                        <p>Planta Temporal</p>
                                     </a>
                                 </li>
-
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon text-info"></i>
-                                        <p>géneros</p>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="./profesiones.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon text-info"></i>
-                                        <p>profesiones</p>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="./servicios.php" class="nav-link active">
-                                        <i class="far fa-circle nav-icon text-info"></i>
-                                        <p>servicios</p>
+                                    <a href="./OPS-SAS.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon text-success"></i>
+                                        <p>OPS-SAS</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
 
+                        <li class="nav-item has-treeview">
+                            <a href="./otros.php" class="nav-link">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>
+                                    Otros
+                                </p>
+                            </a>
+                        </li>
+
                         <!-- LABELS -->
                         <li class="nav-header">LABELS</li>
                         <li class="nav-item">
-                            <a href="./lib/logout.php" class="nav-link">
+                            <a href="lib/logout.php" class="nav-link">
                                 <i class="nav-icon far fa-circle text-danger"></i>
                                 <p>Cerrar Sesión </p>
                             </a>
@@ -267,12 +250,12 @@ if (!isset($user)) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Lista de servicios</h1>
+                            <h1>Asignación de Turnos</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="inicio.php">Inicio</a></li>
-                                <li class="breadcrumb-item active">Servicios</li>
+                                <li class="breadcrumb-item active">Asignar turnos</li>
                             </ol>
                         </div>
                     </div>
@@ -283,47 +266,86 @@ if (!isset($user)) {
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-12">
                             <!-- /.card -->
                             <div class="card">
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    <div class="col-4">
-                                        <a href="./crearServicio.php" class="btn btn-info">Agregar servicio<i class=""></a>
-                                    </div> <br>
-                                    <table id="example1" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Id</th>
-                                                <th>Servicio</th>
-                                                <th>Acciones</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            //crear una variable con la sentencia SQL
-                                            $sql = "SELECT * FROM servicios";
-                                            // crear la variable para ejecutar la consulta
-                                            $consulta = mysqli_query($miConexion, $sql);
-                                            while ($campos = mysqli_fetch_array($consulta)) { ?>
-                                                <tr class="table-secundary">
-                                                    <td><?= $campos['idServicio']; ?></td>
-                                                    <td><?= $campos['nombreServicio']; ?></td>
-                                                    <th>
-                                                        <a href="" class="btn btn-info"><i class="fa fa-marker"></i></a>
-                                                        <a href="./eliminarServicio.php? id=<?= $campos['idServicio']; ?>" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
-                                                    </th>
+                                    <div class="container">
+                                        <br />
+
+                                        <div class="col-3">
+                                            <form action="" method="post">
+                                                <label for="profesion">Profesión</label><br>
+                                                <select name="profesiones">
+                                                    <option>seleccionar</option>
+                                                    <?php
+                                                    $sql = "SELECT * FROM profesion";
+                                                    $query = mysqli_query($miConexion, $sql);
+                                                    while ($campos = mysqli_fetch_array($query)) {
+                                                        //$id = $campos['idProfesion'];
+                                                        $profesion = $campos['profesion'];
+                                                    ?>
+                                                        <option value="<?php echo $profesion; ?>"><?php echo $profesion; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                                <input type="submit" name="buscar" class="btn btn-info" value="buscar">
+                                            </form>
+                                        </div>
+                                        <?php
+
+                                        ?>
+                                        <hr />
+                                        <br />
+                                        <div class="row mb-3">
+                                            <h3>PARAMETRIZACIÓN</h3>
+                                        </div>
+                                        <table id="example1" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Identificación</th>
+                                                    <th>Nombres</th>
+                                                    <th>Apellidos</th>
+                                                    <th>Profesión</th>
+                                                    <th>Cargo</th>
+                                                    <th>Asignar</th>
                                                 </tr>
-                                            <?php } ?>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>Id</th>
-                                                <th>Servicios</th>
-                                                <th>Acciones</th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                    $prof = '';
+                                                    if (isset($_POST['buscar'])) {
+                                                        $prof = $_POST['profesiones'];
+                                                    }
+                                                    $sql = "SELECT * FROM empleados WHERE idContrato ='Planta Temporal' AND idProfesion = '$prof'";
+                                                    $consulta = mysqli_query($miConexion, $sql);
+                                                    while ($datos = mysqli_fetch_array($consulta)) { ?>
+                                                        <tr class="table-secundary">
+                                                            <td><?= $datos['idPersonalAsistencial']; ?></td>
+                                                            <td><?= $datos['nombres']; ?></td>
+                                                            <td><?= $datos['apellidos']; ?></td>
+                                                            <td><?= $datos['idProfesion']; ?></td>
+                                                            <td><?= $datos['idCargo']; ?></td>
+                                                            <td>
+                                                                <a href="./calendar.php">
+                                                                    <p>Calendario</p>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    <?php } ?>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>Identificación</th>
+                                                    <th>Nombres</th>
+                                                    <th>Apellidos</th>
+                                                    <th>Profesión</th>
+                                                    <th>Cargo</th>
+                                                    <th>Asignar</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
                                 </div>
                                 <!-- /.card-body -->
                             </div>
@@ -342,7 +364,8 @@ if (!isset($user)) {
             <div class="float-right d-none d-sm-block">
                 <b>Version</b> 3.0.5
             </div>
-            <strong>
+            <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+            reserved.
         </footer>
 
         <!-- Control Sidebar -->
@@ -352,40 +375,6 @@ if (!isset($user)) {
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
-
-    <!-- jQuery -->
-    <script src="../plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- DataTables -->
-    <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js"></script>
-
-    <!-- modal script -->
-    <!-- page script -->
-    <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "autoWidth": false,
-            });
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-        });
-    </script>
 </body>
 
 </html>

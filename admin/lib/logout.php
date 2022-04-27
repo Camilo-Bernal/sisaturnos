@@ -5,5 +5,5 @@
 
   session_destroy();
 
-  header('Location: /Calendario');
+  header('Location: /sisaturnos/');
 ?>

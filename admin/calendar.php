@@ -1,10 +1,10 @@
 <?php
-    require "lib/conexion.php";
-    $user = $_SESSION['email'];
+require "lib/conexion.php";
+$user = $_SESSION['email'];
 
-    if (!isset($user)) {
-      header ( "Location: ../index.php" );
-    }
+if (!isset($user)) {
+  header("Location: ../index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -173,9 +173,9 @@
           </div>
           <div class="info">
             <a href="#" class="d-block">
-                <?php 
-                  echo "$user";
-                ?>
+              <?php
+              echo "$user";
+              ?>
             </a>
           </div>
         </div>
@@ -187,7 +187,7 @@
                with font-awesome or any other icon font library -->
 
             <li class="nav-item has-treeview">
-              <a href="empleados.php" class="nav-link">
+              <a href="./empleados.php" class="nav-link">
                 <i class="nav-icon fas fa-table"></i>
                 <p>
                   Empleados
@@ -195,30 +195,15 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="calendar.php" class="nav-link active">
+              <a href="./calendario.php" class="nav-link">
                 <i class="nav-icon far fa-calendar-alt"></i>
                 <p>
-                  <i class="fas fa-angle-left right"></i>
-                  Calendario
+                  Asignar Turnos
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-              <li class="nav-item">
-              <a href="asignarTurno.php" class="nav-link">
-                  <i class="far fa-circle nav-icon text-success"></i>
-                  <p>Asignar Turnos</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="tables/data.html" class="nav-link">
-                  <i class="far fa-circle nav-icon text-danger"></i>
-                  <p>no hace nada útil</p>
-                </a>
-              </li>           
-              
-            </ul>
+
             <li class="nav-item has-treeview">
-              <a href="otros.php" class="nav-link">
+              <a href="./otros.php" class="nav-link">
                 <i class="nav-icon fas fa-edit"></i>
                 <p>
                   Otros
@@ -269,6 +254,20 @@
                 <div class="card">
                   <div class="card-header">
                     <h4 class="card-title">turnos rotativos</h4>
+                    <!--  <?php
+                          //Recibir la variable por el metodo Get
+                          $emp = $_GET['employed'];
+                          $sql = "SELECT nombres, apellidos FROM empleados WHERE nombres = '$emp'";
+                          $consulta = mysqli_query($miConexion, $sql);
+                          while ($campos = mysqli_fetch_array($consulta)) { ?>
+                      $nombre = $campos['nombres'];
+                      $apellido = $campos['apellidos'];
+                    <?php } ?>
+                    <h5>
+                      <?php
+                      echo '$nombre';
+                      ?>
+                    </h5> -->
                   </div>
                   <div class="card-body">
                     <!-- the events -->
@@ -315,6 +314,15 @@
                     </div>
                     <!-- /input-group -->
                   </div>
+
+
+                  <div class="card-body">
+                            <button id="guardar" type="button" class="btn btn-success">
+                             Guardar
+                            </button>
+                  </div>
+
+
                 </div>
               </div>
             </div>

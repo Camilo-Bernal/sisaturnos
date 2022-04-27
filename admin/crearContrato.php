@@ -182,7 +182,7 @@ if (!isset($user)) {
                         <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
                         <li class="nav-item has-treeview">
-                            <a href="empleados.php" class="nav-link ">
+                            <a href="./empleados.php" class="nav-link ">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
                                     Empleados
@@ -190,10 +190,10 @@ if (!isset($user)) {
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="calendar.php" class="nav-link">
+                            <a href="./calendario.php" class="nav-link">
                                 <i class="nav-icon far fa-calendar-alt"></i>
                                 <p>
-                                    Calendario
+                                    Asignar Turnos
                                 </p>
                             </a>
                         </li>

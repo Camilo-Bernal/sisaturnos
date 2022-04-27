@@ -184,7 +184,7 @@ if (!isset($user)) {
                         with font-awesome or any other icon font library -->
 
                         <li class="nav-item has-treeview">
-                            <a href="empleados.php" class="nav-link ">
+                            <a href="./empleados.php" class="nav-link ">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
                                     Empleados
@@ -192,16 +192,16 @@ if (!isset($user)) {
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="calendar.php" class="nav-link">
+                            <a href="./calendario.php" class="nav-link">
                                 <i class="nav-icon far fa-calendar-alt"></i>
                                 <p>
-                                    Calendario
+                                    Asignar Turnos
                                 </p>
                             </a>
                         </li>
 
                         <li class="nav-item has-treeview">
-                            <a href="otros.php" class="nav-link active">
+                            <a href="./otros.php" class="nav-link active">
                                 <i class="nav-icon fas fa-edit"></i>
                                 <p>
                                     <i class="fas fa-angle-left right"></i>
@@ -210,14 +210,14 @@ if (!isset($user)) {
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="cargos.php" class="nav-link">
+                                    <a href="./cargos.php" class="nav-link">
                                         <i class="far fa-circle nav-icon text-info"></i>
                                         <p>cargos</p>
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="contratos.php" class="nav-link">
+                                    <a href="./contratos.php" class="nav-link">
                                         <i class="far fa-circle nav-icon text-info"></i>
                                         <p>contratos</p>
                                     </a>
@@ -231,24 +231,25 @@ if (!isset($user)) {
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="profesiones.php" class="nav-link">
+                                    <a href="./profesiones.php" class="nav-link">
                                         <i class="far fa-circle nav-icon text-info"></i>
                                         <p>profesiones</p>
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="servicios.php" class="nav-link">
+                                    <a href="./servicios.php" class="nav-link">
                                         <i class="far fa-circle nav-icon text-info"></i>
                                         <p>servicios</p>
                                     </a>
                                 </li>
+                            </ul>
                         </li>
 
                         <!-- LABELS -->
                         <li class="nav-header">LABELS</li>
                         <li class="nav-item">
-                            <a href="lib/logout.php" class="nav-link">
+                            <a href="./lib/logout.php" class="nav-link">
                                 <i class="nav-icon far fa-circle text-danger"></i>
                                 <p>Cerrar Sesión </p>
                             </a>
