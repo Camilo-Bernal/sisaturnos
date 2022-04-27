@@ -90,7 +90,7 @@ if (!isset($user)) {
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="calendar.php" class="nav-link">
+                            <a href="calendario.php" class="nav-link">
                                 <i class="nav-icon far fa-calendar-alt"></i>
                                 <p>
                                     Calendario
@@ -234,7 +234,7 @@ if (!isset($user)) {
             <div class="float-right d-none d-sm-block">
                 <b></b> 
             </div>
-            <strong> &copy;  <a href="http://adminlte.io"></a>Universidad Mariana</strong> 
+            <strong> &copy; Universidad Mariana</strong> 
             
         </footer>
 

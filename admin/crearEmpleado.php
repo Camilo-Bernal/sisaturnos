@@ -192,7 +192,7 @@ if (!isset($user)) {
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="crearEmpleado.php" class="nav-link active">
+                                    <a href="./crearEmpleado.php" class="nav-link active">
                                         <i class="far fa-circle nav-icon text-success"></i>
                                         <p>Agregar empleado</p>
                                     </a>
@@ -212,16 +212,16 @@ if (!isset($user)) {
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="calendar.php" class="nav-link">
+                            <a href="./calendario.php" class="nav-link">
                                 <i class="nav-icon far fa-calendar-alt"></i>
                                 <p>
-                                    Calendario
+                                    Asignar Turnos
                                 </p>
                             </a>
                         </li>
 
                         <li class="nav-item has-treeview">
-                            <a href="otros.php" class="nav-link">
+                            <a href="./otros.php" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>
                                 <p>
                                     Otros
@@ -232,7 +232,7 @@ if (!isset($user)) {
                         <!-- LABELS -->
                         <li class="nav-header">LABELS</li>
                         <li class="nav-item">
-                            <a href="lib/logout.php" class="nav-link">
+                            <a href="./lib/logout.php" class="nav-link">
                                 <i class="nav-icon far fa-circle text-danger"></i>
                                 <p>Cerrar Sesión </p>
                             </a>

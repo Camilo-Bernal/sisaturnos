@@ -118,67 +118,103 @@ if (!isset($user)) {
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <!-- Add icons to the links using the .nav-icon class
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
 
-            <li class="nav-item has-treeview">
-              <a href="empleados.php" class="nav-link ">
-                <i class="nav-icon fas fa-table"></i>
-                <p>
-                  Empleados
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="calendar.php" class="nav-link">
-                <i class="nav-icon far fa-calendar-alt"></i>
-                <p>
-                  Calendario
-                </p>
-              </a>
-            </li>
-            <li class="nav-item has-treeview">
-              <a href="recargos.php" class="nav-link">
-                <i class="nav-icon fas fa-clock"></i>
-                <p>
-                  Recargos
-                </p>
-              </a>
-            </li>
+                        <li class="nav-item has-treeview">
+                            <a href="./empleados.php" class="nav-link ">
+                                <i class="nav-icon fas fa-table"></i>
+                                <p>
+                                    Empleados
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./calendario.php" class="nav-link">
+                                <i class="nav-icon far fa-calendar-alt"></i>
+                                <p>
+                                    Asignar Turnos
+                                </p>
+                            </a>
+                        </li>
 
-            <li class="nav-item has-treeview">
-              <a href="reportes.php" class="nav-link">
-                <i class="nav-icon fas fa-book"></i>
-                <p>
-                  Reportes
-                </p>
-              </a>
-            </li>
+                        <li class="nav-item has-treeview">
+                            <a href="recargos.php" class="nav-link ">
+                                <i class="nav-icon fas fa-clock"></i>
+                                <p>
+                                    Recargos
+                                </p>
+                            </a>
+                        </li>
 
-            <li class="nav-item has-treeview">
-              <a href="otros.php" class="nav-link">
-                <i class="nav-icon fas fa-edit"></i>
-                <p>
-                  Otros
-                </p>
-              </a>
-              
-             
+                        <li class="nav-item has-treeview">
+                            <a href="reportes.php" class="nav-link ">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    Reportes
+                                </p>
+                            </a>
+                        </li>
 
+                        
 
-            </li>
-            <!-- LABELS -->
-            <li class="nav-header">Sesion</li>
-            <li class="nav-item">
-              <a href="lib/logout.php" class="nav-link">
-                <i class="nav-icon far fa-circle text-danger"></i>
-                <p>Cerrar Sesión </p>
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <!-- /.sidebar-menu -->
+                        <li class="nav-item has-treeview">
+                            <a href="./otros.php" class="nav-link active">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>
+                                    <i class="fas fa-angle-left right"></i>
+                                    Otros
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="./cargos.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon text-info"></i>
+                                        <p>cargos</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="./contratos.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon text-info"></i>
+                                        <p>contratos</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon text-info"></i>
+                                        <p>géneros</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="./profesiones.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon text-info"></i>
+                                        <p>profesiones</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="./servicios.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon text-info"></i>
+                                        <p>servicios</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- LABELS -->
+                        <li class="nav-header">Sesion</li>
+                        <li class="nav-item">
+                            <a href="./lib/logout.php" class="nav-link">
+                                <i class="nav-icon far fa-circle text-danger"></i>
+                                <p>Cerrar Sesión </p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
       </div>
       <!-- /.sidebar -->
     </aside>
@@ -292,9 +328,9 @@ if (!isset($user)) {
     <!-- /.content-wrapper -->
     <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
-        <b>Version</b> Beta 1.2.0
+        <b>Version</b> 
       </div>
-      <strong> Sistema Unificado de Turnos SUT<a href="http://adminlte.io"> Universidad Mariana</a></strong> 
+      <strong> Sistema Unificado de Turnos SUT Universidad Mariana</strong> 
     </footer>
 
     <!-- Control Sidebar -->
