@@ -18,16 +18,124 @@ if (!isset($user)) {
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- DataTables -->
-    <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
-<body class="hold-transition sidebar-mini">
+<style>
+    .margin {
+        margin-left: 100px;
+    }
+
+    .card {
+        margin-top: 10px;
+    }
+
+    .card-top-line {
+        border-top: 3px solid #0c5f54;
+    }
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .card-header-new {
+        color: rgb(255, 255, 255);
+        font-size: 20px;
+        background-color: #157e70;
+        width: auto;
+        height: 45px;
+        margin: none;
+        border-top: none;
+    }
+
+    .card-header {
+        line-height: normal;
+    }
+
+    .thead-titulo {
+        color: azure;
+        background-color: #157e70;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+    }
+
+    .thead-subtitulo {
+        background-color: #d3d3d4;
+    }
+
+    th,
+    td {
+        border: 1px solid rgb(173, 172, 172);
+    }
+
+    .thead-init {
+        border-top-width: 0px;
+    }
+
+    .css-button-arrow--sky {
+        min-width: 160px;
+        height: 50px;
+        color: #fff;
+        padding: 5px 10px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+        outline: none;
+        overflow: hidden;
+        border-radius: 5px;
+        border: none;
+        background-color: #0c5f54
+    }
+
+    .css-button-arrow--sky:hover {
+        border-radius: 10px;
+        padding-right: 24px;
+        padding-left: 8px;
+    }
+
+    .css-button-arrow--sky:hover:after {
+        opacity: 1;
+        right: 10px;
+    }
+
+    .css-button-arrow--sky:after {
+        content: "\00BB";
+        position: absolute;
+        opacity: 0;
+        font-size: 20px;
+        line-height: 40px;
+        top: 0;
+        right: -20px;
+        transition: 0.4s;
+    }
+
+
+
+    .sidebar-dark-blue {
+        background: #157e70 !important;
+        text-decoration-color: rgb(255, 255, 255);
+    }
+
+    .sidebar-blue2 {
+        background: #108b7b;
+        text-decoration-color: rgb(255, 255, 255);
+    }
+</style>
+
+<body class="hold-transition sidebar-mini layout-fixed sidebar-open oss-dragging">
     <div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -40,109 +148,16 @@ if (!isset($user)) {
                     <a href="" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
+                <a href="./Manual de usuario sistema unificado de turnos.pdf" class="nav-link">Manual</a>
                 </li>
             </ul>
 
             <!-- SEARCH FORM -->
-            <form class="form-inline ml-3">
-                <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                    <div class="input-group-append">
-                        <button class="btn btn-navbar" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
+          
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <!-- Messages Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-comments"></i>
-                        <span class="badge badge-danger navbar-badge">3</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-                                <img src="../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        Brad Diesel
-                                        <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">Call me whenever you can...</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-                                <img src="../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        John Pierce
-                                        <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">I got your message bro</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-                                <img src="../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        Nora Silvester
-                                        <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">The subject goes here</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                    </div>
-                </li>
-                <!-- Notifications Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">15</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">15 Notifications</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 4 new messages
-                            <span class="float-right text-muted text-sm">3 mins</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-users mr-2"></i> 8 friend requests
-                            <span class="float-right text-muted text-sm">12 hours</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-file mr-2"></i> 3 new reports
-                            <span class="float-right text-muted text-sm">2 days</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                    </div>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
                         <i class="fas fa-th-large"></i>
@@ -153,96 +168,10 @@ if (!isset($user)) {
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
-            <a href="#" class="brand-link">
-                <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Su Turno HUDN</span>
-            </a>
-
-            <!-- Sidebar -->
-            <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-                    </div>
-                    <div class="info">
-                        <a href="#" class="d-block">
-                            <?php
-                            echo "$user";
-                            ?>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
-                        <!-- Add icons to the links using the .nav-icon class
-                        with font-awesome or any other icon font library -->
-                        <li class="nav-item">
-                            <a href="./empleados.php" class="nav-link active">
-                                <i class="nav-icon fas fa-table"></i>
-                                <p>
-                                    <i class="fas fa-angle-left right"></i>
-                                    Empleados
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="./crearEmpleado.php" class="nav-link active">
-                                        <i class="far fa-circle nav-icon text-success"></i>
-                                        <p>Agregar empleado</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="./editarEmpleado.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon text-info"></i>
-                                        <p>Editar empleado</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="./desactivarEmpleado.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon text-danger"></i>
-                                        <p>Eliminar empleado</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./calendario.php" class="nav-link">
-                                <i class="nav-icon far fa-calendar-alt"></i>
-                                <p>
-                                    Asignar Turnos
-                                </p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item has-treeview">
-                            <a href="./otros.php" class="nav-link">
-                                <i class="nav-icon fas fa-edit"></i>
-                                <p>
-                                    Otros
-                                </p>
-                            </a>
-                        </li>
-
-                        <!-- LABELS -->
-                        <li class="nav-header">LABELS</li>
-                        <li class="nav-item">
-                            <a href="./lib/logout.php" class="nav-link">
-                                <i class="nav-icon far fa-circle text-danger"></i>
-                                <p>Cerrar Sesión </p>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- /.sidebar-menu -->
-            </div>
-            <!-- /.sidebar -->
-        </aside>
+        <?php
+        require('./sidebar.php')
+        ?>
+        <!-- /.Main Sidebar Container -->
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -251,38 +180,47 @@ if (!isset($user)) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Crear Empleado</h1>
+                            <h1></h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="inicio.php">Inicio</a></li>
-                                <li class="breadcrumb-item active">Crear empleado</li>
+                                <li class="breadcrumb-item active">Registrar empleado</li>
                             </ol>
                         </div>
                     </div>
-                </div><!-- /.container-fluid -->
+                </div>
+                <!-- /.container-fluid -->
             </section>
 
             <!-- Main content -->
             <section class="content center">
                 <div class="container-fluid">
-                    <div class="row">
-                        <div class="col">
-                            <!-- /.card -->
-                            <div class="card">
-                                <div class="card card-body">
-                                    <div class="row">
-                                        <div class="text-center">
-                                            <h1 class="text-center">Crear Empleado</h1>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <form action="" method="post">
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <label for="tipoId">Tipo</label><br>
-                                                    <select name="tipoIdentificacion" id="">
-                                                        <option>seleccionar</option>
+                    <!-- desde aquí lo nuevo -->
+                    <div class="row justify-content-center" style="width: 100%;">
+                        <div class="col-sm-11">
+                            <div class="card card-top-line">
+                                <div class="card-body">
+                                    <h2 class="card-header text-center"><b>Registrar Empleado</b></h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <form action="" method="post">
+                            <div class="row justify-content-center" style="width: 100%;">
+                                <div class="col-sm-11 mb-3">
+                                    <div class="card card-top-line">
+                                        <h5 class="card-header-new card-header"><b>Datos nuevo empleado</b></h5>
+                                        <div class="card-body">
+
+                                            <div class="row mx-auto">
+                                                <div class="col-sm-2 mb-3">
+                                                    <label for="tipoDocumento" style="margin-left:70px;">Tipo ID</label>
+                                                </div>
+                                                <div class="col-sm-2 mb-3">
+                                                    <select class="form-select form-select-sm form-select-padding-y-sm:0" name="tipoIdentificacion" style="width: 130px;" aria-label="Default select example" id="tipoDocumento" required>
+                                                        <option>Seleccionar</option>
                                                         <?php
                                                         $sql = "SELECT * FROM tipoid";
                                                         $consulta = mysqli_query($miConexion, $sql);
@@ -294,66 +232,41 @@ if (!isset($user)) {
                                                         <?php } ?>
                                                     </select>
                                                 </div>
-                                                <div class="col-3">
-                                                    <label for="identificacion">N° Identificación</label><br>
-                                                    <input type="number" name="identificacion" required>
+
+                                                <div class="col-sm-1 mb-3" style="margin-left:40px;">
+                                                    <label for="docIdentificacion">Identificación</label>
                                                 </div>
-                                                <div class="col-3">
-                                                    <label for="nombre">Nombre</label><br>
-                                                    <input type="text" name="nombre" required>
-                                                </div>
-                                                <div class="col-3">
-                                                    <label for="apellido">Apellido</label><br>
-                                                    <input type="text" name="apellido" required>
+                                                <div class="col-sm-1 mb-3" style="margin-left:30px;">
+
+                                                    <input type="number" class="form-control form-control-sm" style="width: 130px;" id="docIdentificacion" name="identificacion" required>
+
                                                 </div>
                                             </div>
-                                            <br><br>
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <label for="telefono">Teléfono</label><br>
-                                                    <input type="number" name="telefono" required>
+                                            <!--###########################################################################################################################-->
+                                            <div class="row mx-auto">
+                                                <div class="col-sm-2 mb-3">
+                                                    <label for="nombre" style="margin-left:70px;">Nombres</label>
                                                 </div>
-                                                <div class="col-3">
-                                                    <label for="correo">Correo (opcional)</label>
-                                                    <input type="text" name="correo">
+                                                <div class="col-sm-2 mb-3">
+                                                    <input type="text" class="form-control form-control-sm" id="nombre" name="nombre" required>
                                                 </div>
-                                                <div class="col-3">
-                                                    <label for="contrato">Tipo de contrato</label><br>
-                                                    <select name="contrato">
-                                                        <option>seleccionar</option>
-                                                        <?php
-                                                        $sql = "SELECT * FROM contrato";
-                                                        $consulta = mysqli_query($miConexion, $sql);
-                                                        while ($campos = mysqli_fetch_array($consulta)) {
-                                                            $id = $campos['idContrato'];
-                                                            $contrato = $campos['tipoContrato'];
-                                                        ?>
-                                                            <option value="<?php echo $id; ?>"><?php echo $contrato; ?></option>
-                                                        <?php } ?>
-                                                    </select>
+
+                                                <div class="col-sm-1 mb-3" style="margin-left:40px;">
+                                                    <label for="apellido">Apellidos</label>
                                                 </div>
-                                                <div class="col-3">
-                                                    <label for="nomina">Valor nómina</label><br>
-                                                    <select name="nomina">
-                                                        <option>seleccionar</option>
-                                                        <?php
-                                                        $sql = "SELECT * FROM nomina";
-                                                        $consulta = mysqli_query($miConexion, $sql);
-                                                        while ($campos = mysqli_fetch_array($consulta)) {
-                                                            $id = $campos['idNomina'];
-                                                            $nomina = $campos['valorNomina'];
-                                                        ?>
-                                                            <option value="<?php echo $id; ?>"><?php echo $nomina; ?></option>
-                                                        <?php } ?>
-                                                    </select>
+                                                <div class="col-sm-2 mb-3">
+                                                    <input type="text" class="form-control form-control-sm" style="margin-left:30px;" id="apellido" name="apellido" required>
                                                 </div>
-                                            </div>
-                                            <br><br>
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <label for="genero">Género</label><br>
-                                                    <select name="genero" id="">
-                                                        <option>seleccionar</option>
+
+                                                <div class="col-sm-1 mb-3">
+                                                    <label for="genero" style="margin-left:50px;">Género </label>
+                                                </div>
+                                                <div class="col-sm-1 mb-3" style="margin-left:50px;">
+                                                    <select class="form-select form-select-sm" style="width: 150px;" aria-label="Default select example" id="genero" name="genero" required>
+
+
+
+                                                        <option>Seleccionar</option>
                                                         <?php
                                                         $sql = "SELECT * FROM genero";
                                                         $consulta = mysqli_query($miConexion, $sql);
@@ -365,9 +278,17 @@ if (!isset($user)) {
                                                         <?php } ?>
                                                     </select>
                                                 </div>
-                                                <div class="col-3">
-                                                    <label for="profesion">Profesión</label><br>
-                                                    <select name="profesion" id="">
+
+
+                                            </div>
+
+                                            <div class="row mx-auto">
+
+                                                <div class="col-sm-2 mb-3">
+                                                    <label for="profesion" style="margin-left:70px;">Profesión</label>
+                                                </div>
+                                                <div class="col-sm-2 mb-3">
+                                                    <select class="form-select form-select-sm" style=" width: 130px" aria-label="Default select example" id="profesion" name="profesion" required>
                                                         <option>seleccionar</option>
                                                         <?php
                                                         $sql = "SELECT * FROM profesion";
@@ -380,9 +301,12 @@ if (!isset($user)) {
                                                         <?php } ?>
                                                     </select>
                                                 </div>
-                                                <div class="col-3">
-                                                    <label for="cargo">Cargo</label><br>
-                                                    <select name="cargo" id="">
+
+                                                <div class="col-sm-1 mb-3" style="margin-left:40px;">
+                                                    <label for="cargo">Cargo</label>
+                                                </div>
+                                                <div class="col-sm-2 mb-3 " style="margin-left:30px;">
+                                                    <select class="form-select form-select-sm" style="width: 130px;" aria-label="Default select example" id="cargo" name="cargo" required>
                                                         <option>seleccionar</option>
                                                         <?php
                                                         $sql = "SELECT * FROM cargos";
@@ -395,17 +319,65 @@ if (!isset($user)) {
                                                         <?php } ?>
                                                     </select>
                                                 </div>
+
+                                                <div class="col-sm-1 mb-3">
+                                                    <label for="contrato" style="margin-left:20px;">Contrato </label>
+                                                </div>
+                                                <div class="col-sm-1 mb-3" style="margin-left:20px;">
+                                                    <select class="form-select form-select-sm" style="width: 150px;" aria-label="Default select example" id="contrato" name="contrato" required>
+                                                        <option>seleccionar</option>
+                                                        <?php
+                                                        $sql = "SELECT * FROM contrato";
+                                                        $consulta = mysqli_query($miConexion, $sql);
+                                                        while ($campos = mysqli_fetch_array($consulta)) {
+                                                            $id = $campos['idContrato'];
+                                                            $contrato = $campos['tipoContrato'];
+                                                        ?>
+                                                            <option value="<?php echo $id; ?>"><?php echo $contrato; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+
                                             </div>
-                                            <br>
-                                            <input type="submit" name="agregar" class="btn btn-primary" value="Crear">
-                                        </form>
+                                            <div class="row mx-auto">
+                                                <div class="col-sm-2 mb-3 ">
+                                                    <label for="ocupacion" style="margin-left:70px;">Email</label>
+                                                </div>
+
+                                                <div class="col-sm-2 mb-3">
+                                                    <input type="text" class="form-control form-control-sm" id="email" name="correo" required>
+                                                </div>
+
+                                                <div class="col-sm-1 mb-3" style="margin-left:40px;">
+                                                    <label for="telefonoPersonal">Teléfono</label>
+                                                </div>
+                                                <div class="col-sm-2 mb-3">
+                                                    <input type="text" class="form-control form-control-sm" style="margin-left:30px;" id="telefono" name="telefono" required>
+                                                </div>
+                                                <div class="col-sm-1 mb-3">
+                                                    <label for="genero" style="margin-left:50px;">Nómina</label>
+                                                </div>
+                                                <div class="col-sm-1 mb-3" style="margin-left:50px;">
+                                                    <input type="number" class="form-control form-control-sm" style="width: 150px;" id="nomina" name="nomina" placeholder="$" required>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
                                     </div>
                                 </div>
-                                <!-- /.card-body -->
+                                <div class="row mx-auto">
+                                    <div class="col-sm-5 mb-3 btn-lg-8">
+
+                                    </div>
+                                    <div class="col-sm-2 mb-3 btn-lg-8" style="align-items: center;">
+                                        <input type="submit" value="Registrar" class="btn button-18 css-button-arrow--sky" name="agregar" style="margin-left: 0px;">
+                                    </div>
+                                    <div class="col-sm-5 mb-3 btn-lg-8"></div>
+
+                                </div>
                             </div>
-                            <!-- /.card -->
-                        </div>
-                        <!-- /.col -->
+                        </form>
                     </div>
                     <!-- /.row -->
                 </div>
@@ -415,12 +387,12 @@ if (!isset($user)) {
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <div class="float-right d-none d-sm-block">
-                <b>Version</b> 3.0.5
-            </div>
-            <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-            reserved.
-        </footer>
+      <div class="float-right d-none d-sm-block">
+        <b>Versión</b> 1
+      </div>
+      <strong>Copyright 2022-2025 <a href="http://www.umariana.edu.co">Univerdasidad Mariana</a>.</strong> 
+      
+    </footer>
 
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
@@ -458,24 +430,59 @@ if (isset($_POST['agregar'])) {
     $cargo = $_POST['cargo'];
 
     // crear una consulata para insertar las variables en la tabla
-    $sql = "INSERT INTO personalasistencial (idTipoId, idPersonalAsistencial, nombres, apellidos, telefono, correoElectronico, idContrato, idNomina, idGenero, idProfesion, idCargo)
+    $sql1 = "SELECT idPersonalAsistencial FROM personalasistencial WHERE idPersonalAsistencial = '$identificacion' ";
+    $sql2 = "SELECT correoElectronico FROM personalasistencial WHERE correoElectronico ='$correo' ";
+    $sql3 = "SELECT telefono FROM personalasistencial WHERE telefono ='$telefono' ";
+  
+    $consulta1 = mysqli_query($miConexion, $sql1);
+    $consulta2 = mysqli_query($miConexion, $sql2);
+    $consulta3 = mysqli_query($miConexion, $sql3);
+  
+    if (mysqli_num_rows($consulta1) > 0) {
+
+        echo ' 
+        <script>
+            alert("¡Error! \n La identificación ya se encuentra regitrada \n Intenta de nuevo");
+            window.location = "./crearEmpleado.php";
+        </script>';
+    } 
+    else if (mysqli_num_rows($consulta2) > 0) {
+
+        echo ' 
+        <script>
+            alert("¡Error! \n El correo electrónico ya exsite\n Intenta de nuevo");
+            window.location = "./crearEmpleado.php";
+        </script>';
+    } 
+    
+    else if (mysqli_num_rows($consulta3) > 0) {
+
+        echo ' 
+        <script>
+            alert("¡Error! \n El teléfono ya exsite\n Intenta de nuevo");
+            window.location = "./crearEmpleado.php";
+        </script>';
+    }
+    else {
+        $sql = "INSERT INTO personalasistencial (idTipoId, idPersonalAsistencial, nombres, apellidos, telefono, correoElectronico, idContrato, idNomina, idGenero, idProfesion, idCargo)
             VALUES ($tipoId, $identificacion, '$nombre', '$apellido', $telefono, '$correo', $contrato, $nomina, $genero, $profesion, $cargo)";
-    $consulta = mysqli_query($miConexion, $sql);
-    if (!$consulta) {
-        echo '
+        $consulta = mysqli_query($miConexion, $sql);
+        if (!$consulta) {
+            echo '
             <script>
-                alert("Error \n Verifica e inenta nuevamente");
+                alert("¡Error! \n Verifica e inenta nuevamente");
                 window.location = "./empleados.php";
             </script>
         ';
-        die(mysqli_error($miConexion));
-    } else {
-        echo '
+            die(mysqli_error($miConexion));
+        } else {
+            echo '
             <script>
-                alert("Se agregó al empleado correctamente");
+                alert("¡Se agregó al empleado correctamente!");
                 window.location = "./empleados.php";
             </script>
         ';
+        }
     }
 }
 ?>

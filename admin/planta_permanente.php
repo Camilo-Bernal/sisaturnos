@@ -9,6 +9,7 @@ if (!isset($user)) {
 <!DOCTYPE html>
 <html lang="es">
 
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,13 +20,194 @@ if (!isset($user)) {
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!--   <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css"> -->
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.0/css/dataTables.bootstrap5.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-</head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-<body class="hold-transition sidebar-mini">
+</head>
+<style>
+    .margin {
+        margin-left: 100px;
+    }
+
+    .card {
+        margin-top: 10px;
+    }
+
+    .card-top-line {
+        border-top: 3px solid #0c5f54;
+    }
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .bdr {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        overflow: hidden;
+    }
+
+    .card-header-new {
+        color: rgb(255, 255, 255);
+        font-size: 20px;
+        background-color: #157e70;
+        width: auto;
+        height: 45px;
+        margin: none;
+        border-top: none;
+    }
+
+    .thead-titulo-copy {
+
+        color: azure;
+        background-color: #157e70;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        font-size: 20px;
+    }
+
+    .thead-titulo {
+
+        color: azure;
+        background-color: #0c5f54;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+    }
+
+    .thead-subtitulo {
+        background-color: #d3d3d4;
+    }
+
+    th,
+    td {
+        border: 1px solid rgb(173, 172, 172);
+    }
+
+    .thead-init {
+        border-top-width: 0px;
+    }
+
+    .button-18-row {
+        align-items: center;
+        background-color: #0c5f54;
+        border: 0;
+        border-radius: 10px;
+        color: #ffffff;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .css-button-arrow--sky {
+        min-width: 100px;
+        height: 20px;
+        color: #fff;
+        padding: 5px 10px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+        outline: none;
+        overflow: hidden;
+        border-radius: 5px;
+        border: none;
+        background-color: #0c5f54
+    }
+
+    .btn-primary {
+        background-color: #0c5f54
+    }
+
+    .css-button-arrow--sky:hover {
+        border-radius: 10px;
+        padding-right: 24px;
+        padding-left: 8px;
+    }
+
+    .css-button-arrow--sky:hover:after {
+        opacity: 1;
+        right: 10px;
+    }
+
+    .css-button-arrow--sky:after {
+        content: "\00BB";
+        position: absolute;
+        opacity: 0;
+        font-size: 20px;
+        line-height: 40px;
+        top: 0;
+        right: -20px;
+        transition: 0.4s;
+    }
+
+    /* CSS */
+    .button-18 {
+        align-items: center;
+        background-color: #0c5f54;
+        border: 0;
+        border-radius: 10px;
+        box-sizing: border-box;
+        color: #ffffff;
+        cursor: pointer;
+        display: inline-flex;
+        font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        justify-content: center;
+        line-height: 20px;
+        max-width: 10px;
+        min-height: 20px;
+        min-width: 100px;
+        height: 35px;
+        overflow: hidden;
+        padding: 0px;
+        padding-left: 20px;
+        padding-right: 20px;
+        text-align: center;
+        touch-action: manipulation;
+        transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+        user-select: none;
+        -webkit-user-select: none;
+        vertical-align: middle;
+    }
+
+    .button-18:hover,
+    .button-18:focus {
+        background-color: #065968;
+        color: #ffffff;
+    }
+
+    .button-18:active {
+        background: #09223b;
+        color: rgb(255, 255, 255, .7);
+    }
+
+    .button-18:disabled {
+        cursor: not-allowed;
+        background: rgba(0, 0, 0, .08);
+        color: rgba(0, 0, 0, .3);
+    }
+</style>
+
+<body class="hold-transition sidebar-mini layout-fixed sidebar-open oss-dragging">
     <div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -35,112 +217,18 @@ if (!isset($user)) {
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="" class="nav-link">Home</a>
+                    <a href="inicio.php" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
+                <a href="./Manual de usuario sistema unificado de turnos.pdf" class="nav-link">Manual</a>
                 </li>
             </ul>
 
-            <!-- SEARCH FORM -->
-            <form class="form-inline ml-3">
-                <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                    <div class="input-group-append">
-                        <button class="btn btn-navbar" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
+
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <!-- Messages Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-comments"></i>
-                        <span class="badge badge-danger navbar-badge">3</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-                                <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        Brad Diesel
-                                        <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">Call me whenever you can...</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-                                <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        John Pierce
-                                        <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">I got your message bro</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-                                <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        Nora Silvester
-                                        <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">The subject goes here</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                    </div>
-                </li>
-                <!-- Notifications Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">15</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">15 Notifications</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 4 new messages
-                            <span class="float-right text-muted text-sm">3 mins</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-users mr-2"></i> 8 friend requests
-                            <span class="float-right text-muted text-sm">12 hours</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-file mr-2"></i> 3 new reports
-                            <span class="float-right text-muted text-sm">2 days</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                    </div>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
                         <i class="fas fa-th-large"></i>
@@ -148,203 +236,99 @@ if (!isset($user)) {
                 </li>
             </ul>
         </nav>
+
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
-            <a href="#" class="brand-link">
-                <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Su Turno HUDN</span>
-            </a>
-
-            <!-- Sidebar -->
-            <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-                    </div>
-                    <div class="info">
-                        <a href="#" class="d-block">
-                            <?php
-                            echo "$user";
-                            ?>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-                        with font-awesome or any other icon font library -->
-
-                        <li class="nav-item has-treeview">
-                            <a href="./empleados.php" class="nav-link ">
-                                <i class="nav-icon fas fa-table"></i>
-                                <p>
-                                    Empleados
-                                </p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="./calendario.php" class="nav-link active">
-                                <i class="nav-icon far fa-calendar-alt"></i>
-                                <p>
-                                    <i class="fas fa-angle-left right"></i>
-                                    Asignar Turnos
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="./planta_permanente.php" class="nav-link active">
-                                        <i class="far fa-circle nav-icon text-success"></i>
-                                        <p>Planta Permanente</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="./planta_temporal.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon text-success"></i>
-                                        <p>Planta Temporal</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="./OPS-SAS.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon text-success"></i>
-                                        <p>OPS-SAS</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item has-treeview">
-                            <a href="./otros.php" class="nav-link">
-                                <i class="nav-icon fas fa-edit"></i>
-                                <p>
-                                    Otros
-                                </p>
-                            </a>
-                        </li>
-
-                        <!-- LABELS -->
-                        <li class="nav-header">LABELS</li>
-                        <li class="nav-item">
-                            <a href="lib/logout.php" class="nav-link">
-                                <i class="nav-icon far fa-circle text-danger"></i>
-                                <p>Cerrar Sesión </p>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- /.sidebar-menu -->
-            </div>
-            <!-- /.sidebar -->
-        </aside>
+        <?php
+        require('./sidebar.php')
+        ?>
+        <!-- /.Main Sidebar Container -->
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1>Asignación de Turnos</h1>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="inicio.php">Inicio</a></li>
-                                <li class="breadcrumb-item active">Asignar turnos</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div><!-- /.container-fluid -->
-            </section>
-
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-12 ">
                             <!-- /.card -->
-                            <div class="card">
+                            <div class="card card-top-line mt-3">
                                 <!-- /.card-header -->
                                 <div class="card-body">
+                                    <h3 class="card-header text-center mb-4"><b>Asignación de Turnos</b> </h3>
                                     <div class="container">
                                         <br />
+                                        <form action="" method="post">
 
-                                        <div class="col-3">
-                                            <form action="" method="post">
-                                                <label for="profesion">Profesión</label><br>
-                                                <select name="profesiones" id="">
-                                                    <option>seleccionar</option>
-                                                    <?php
-                                                    $sql = "SELECT * FROM profesion";
-                                                    $consulta = mysqli_query($miConexion, $sql);
-                                                    while ($campos = mysqli_fetch_array($consulta)) {
-                                                        //$id = $campos['idProfesion'];
-                                                        $profesion = $campos['profesion'];
-                                                    ?>
-                                                        <option value="<?php echo $profesion; ?>"><?php echo $profesion; ?></option>
-                                                    <?php } ?>
-                                                </select>
-                                                <input type="submit" name="buscar" class="btn btn-info" value="buscar">
-                                            </form>
-                                        </div>
-                                        <?php
+                                            <div class="row justify-content-center">
+                                                <div class="col-sm-1 mt-3">
+                                                    <label for="">
+                                                        <b>Profesión</b>
+                                                    </label>
+                                                </div>
 
-                                        ?>
-                                        <hr />
+                                                <div class="col-sm-2 mt-3">
+                                                    <select class="form-select form-select-sm form-select-padding-y-sm:0 select-css" style="margin-left: 10px;" name="profesiones" id="" aria-label="Default select example">
+                                                        <option>Seleccionar</option>
+                                                        <?php
+                                                        $sql = "SELECT * FROM profesion";
+                                                        $consulta = mysqli_query($miConexion, $sql);
+                                                        while ($campos = mysqli_fetch_array($consulta)) {
+                                                            //$id = $campos['idProfesion'];
+                                                            $profesion = $campos['profesion'];
+                                                        ?>
+                                                            <option value="<?php echo $profesion; ?>"><?php echo $profesion; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-9 mt-3">
+                                                    <input type="submit" name="buscar" class="btn button-18" value="Buscar">
+                                                </div>
+                                            </div>
+                                        </form>
                                         <br />
-                                        <div class="row mb-3">
-                                            <h3>PARAMETRIZACIÓN</h3>
-                                        </div>
-                                        <table id="example1" class="table table-bordered table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>Identificación</th>
-                                                    <th>Nombres</th>
-                                                    <th>Apellidos</th>
-                                                    <th>Profesión</th>
-                                                    <th>Cargo</th>
-                                                    <th>Asignar</th>
+                                        <table id="example2" class="table table-bordered table-striped bdr">
+                                            <thead class="thead-init">
+                                                <tr class="thead-init thead-titulo ">
+                                                    <th scope="col" colspan="10" class="text-center ">
+                                                        <b> Datos empleados</b>
+                                                    </th>
+                                                </tr>
+                                                <tr class="thead-subtitulo text-center">
+
+                                                    <th class="col-sm-1 text-center">Identificación</th>
+                                                    <th class="col-sm-2 text-center">Nombres</th>
+                                                    <th class="col-sm-2 text-center">Apellidos</th>
+                                                    <th class="col-sm-2 text-center">Profesión</th>
+                                                    <th class="col-sm-2 text-center">Cargo</th>
+                                                    <th class="col-sm-2 text-center">Asignar</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                            <?php
-                                                    $prof = '';
-                                                    if (isset($_POST['buscar'])) {
-                                                        $prof = $_POST['profesiones'];
-                                                    }
-                                                    $sql = "SELECT * FROM empleados WHERE idContrato ='Planta Permanente' AND idProfesion = '$prof'";
-                                                    $consulta = mysqli_query($miConexion, $sql);
-                                                    while ($datos = mysqli_fetch_array($consulta)) { ?>
-                                                        <tr class="table-secundary">
-                                                            <td><?= $datos['idPersonalAsistencial']; ?></td>
-                                                            <td><?= $datos['nombres']; ?></td>
-                                                            <td><?= $datos['apellidos']; ?></td>
-                                                            <td><?= $datos['idProfesion']; ?></td>
-                                                            <td><?= $datos['idCargo']; ?></td>
-                                                            <td>
-                                                                <a href="./calendar.php employed=<?= ($datos['nombres']); ?>">
-                                                                    <p>Calendario</p>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                <?php }
-                                                ?>
+                                            <tbody class="text-center">
+                                                <?php
+                                                $prof = '';
+                                                if (isset($_POST['buscar'])) {
+                                                    $prof = $_POST['profesiones'];
+                                                }
+                                                $sql = "SELECT * FROM empleados WHERE idContrato ='Planta Permanente' AND idProfesion = '$prof'";
+                                                $consulta = mysqli_query($miConexion, $sql);
+                                                while ($datos = mysqli_fetch_array($consulta)) { ?>
+                                                    <tr class="table-secundary">
+                                                        <td><?= $datos['idPersonalAsistencial']; ?></td>
+                                                        <td><?= $datos['nombres']; ?></td>
+                                                        <td><?= $datos['apellidos']; ?></td>
+                                                        <td><?= $datos['idProfesion']; ?></td>
+                                                        <td><?= $datos['idCargo']; ?></td>
+                                                        <td>
+                                                            <a href="./miCalendario.php? id=<?= $datos['idPersonalAsistencial']; ?>">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                <?php } ?>
                                             </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>Identificación</th>
-                                                    <th>Nombres</th>
-                                                    <th>Apellidos</th>
-                                                    <th>Profesión</th>
-                                                    <th>Cargo</th>
-                                                    <th>Asignar</th>
-                                                </tr>
-                                            </tfoot>
                                         </table>
                                     </div>
                                 </div>
@@ -362,12 +346,12 @@ if (!isset($user)) {
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <div class="float-right d-none d-sm-block">
-                <b>Version</b> 3.0.5
-            </div>
-            <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-            reserved.
-        </footer>
+      <div class="float-right d-none d-sm-block">
+        <b>Versión</b> 1
+      </div>
+      <strong>Copyright 2022-2025 <a href="http://www.umariana.edu.co">Univerdasidad Mariana</a>.</strong> 
+      
+    </footer>
 
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
@@ -376,6 +360,37 @@ if (!isset($user)) {
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
+
+    <script src="../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables -->
+    <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../dist/js/demo.js"></script>
+    <!-- page script -->
+    <script>
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "autoWidth": false,
+            });
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
 </body>
 
 </html>

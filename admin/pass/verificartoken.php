@@ -21,9 +21,6 @@
     }else{
         $correcto=false;
     }
-   
-   
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

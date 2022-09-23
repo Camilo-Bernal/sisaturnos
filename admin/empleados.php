@@ -26,9 +26,212 @@ if (!isset($user)) {
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.datatables.net/1.12.0/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 </head>
 
-<body class="hold-transition sidebar-mini">
+<style>
+    .sidebar-dark-blue {
+        background: #157e70 !important;
+        text-decoration-color: rgb(255, 255, 255);
+    }
+
+    .sidebar-blue2 {
+        background: #108b7b;
+        text-decoration-color: rgb(255, 255, 255);
+    }
+
+    div.dataTables_length select {
+        width: 40% !important;
+
+    }
+
+    .bdr {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        overflow: hidden;
+    }
+
+    .margin {
+        margin-left: 100px;
+    }
+
+    .card {
+        margin-top: 10px;
+    }
+
+    .card-top-line {
+        border-top: 3px solid #0c5f54;
+    }
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .card-header-new {
+        color: rgb(244, 247, 247);
+        background-color: #157e70;
+        width: auto;
+        height: 30px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+    }
+
+    .card-header-new {
+        color: rgb(255, 255, 255);
+        font-size: 20px;
+        background-color: #157e70;
+        width: auto;
+        height: 45px;
+        margin: none;
+        border-top: none;
+    }
+
+    .thead-titulo-copy {
+        color: rgb(8, 8, 8);
+        background-color: #b2b4b4;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        font-size: 20px;
+    }
+
+    .thead-titulo {
+        color: #fff;
+        background-color: #157e70;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+    }
+
+    .thead-subtitulo {
+        background-color: #d3d3d4;
+        color: #09223b;
+    }
+
+    th,
+    td {
+        border: 1px solid rgb(173, 172, 172);
+    }
+
+    .thead-init {
+        border-top-width: 0px;
+    }
+
+    .css-button-arrow--sky {
+        min-width: 160px;
+        height: 50px;
+        color: #fff;
+        padding: 5px 10px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+        outline: none;
+        overflow: hidden;
+        border-radius: 5px;
+        border: none;
+        background-color: #0c5f54
+    }
+
+    .btn-primary {
+        background-color: #0c5f54
+    }
+
+    .css-button-arrow--sky:hover {
+        border-radius: 10px;
+        padding-right: 24px;
+        padding-left: 8px;
+    }
+
+    .css-button-arrow--sky:hover:after {
+        opacity: 1;
+        right: 10px;
+    }
+
+    .css-button-arrow--sky:after {
+        content: "\00BB";
+        position: absolute;
+        opacity: 0;
+        font-size: 20px;
+        line-height: 40px;
+        top: 0;
+        right: -20px;
+        transition: 0.4s;
+    }
+
+    .button-18-row {
+        align-items: center;
+        background-color: #0c5f54;
+        border: 0;
+        border-radius: 10px;
+        color: #ffffff;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    /* CSS */
+    .button-18 {
+        align-items: center;
+        background-color: #0c5f54;
+        border: 0;
+        border-radius: 10px;
+        box-sizing: border-box;
+        color: #ffffff;
+        cursor: pointer;
+        display: inline-flex;
+        font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        justify-content: center;
+        line-height: 20px;
+        max-width: 480px;
+        min-height: 40px;
+        min-width: 160px;
+        height: 50px;
+        overflow: hidden;
+        padding: 0px;
+        padding-left: 20px;
+        padding-right: 20px;
+        text-align: center;
+        touch-action: manipulation;
+        transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+        user-select: none;
+        -webkit-user-select: none;
+        vertical-align: middle;
+    }
+
+    .button-18:hover,
+    .button-18:focus {
+        background-color: #065968;
+        color: #ffffff;
+    }
+
+    .button-18:active {
+        background: #09223b;
+        color: rgb(255, 255, 255, .7);
+    }
+
+    .button-18:disabled {
+        cursor: not-allowed;
+        background: rgba(0, 0, 0, .08);
+        color: rgba(0, 0, 0, .3);
+    }
+</style>
+<body class="hold-transition sidebar-mini layout-fixed sidebar-open oss-dragging">
     <div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -38,112 +241,18 @@ if (!isset($user)) {
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="" class="nav-link">Home</a>
+                    <a href="inicio.php" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
+                <a href="./Manual de usuario sistema unificado de turnos.pdf" class="nav-link">Manual</a>
                 </li>
             </ul>
 
-            <!-- SEARCH FORM -->
-            <form class="form-inline ml-3">
-                <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                    <div class="input-group-append">
-                        <button class="btn btn-navbar" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
+
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <!-- Messages Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-comments"></i>
-                        <span class="badge badge-danger navbar-badge">3</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-                                <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        Brad Diesel
-                                        <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">Call me whenever you can...</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-                                <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        John Pierce
-                                        <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">I got your message bro</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-                                <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        Nora Silvester
-                                        <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">The subject goes here</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                    </div>
-                </li>
-                <!-- Notifications Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">15</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">15 Notifications</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 4 new messages
-                            <span class="float-right text-muted text-sm">3 mins</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-users mr-2"></i> 8 friend requests
-                            <span class="float-right text-muted text-sm">12 hours</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-file mr-2"></i> 3 new reports
-                            <span class="float-right text-muted text-sm">2 days</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                    </div>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
                         <i class="fas fa-th-large"></i>
@@ -154,94 +263,10 @@ if (!isset($user)) {
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
-            <a href="#" class="brand-link">
-                <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Su Turno HUDN</span>
-            </a>
-
-            <!-- Sidebar -->
-            <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-                    </div>
-                    <div class="info">
-                        <a href="#" class="d-block">
-                            <?php
-                            echo "$user";
-                            ?>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-                        with font-awesome or any other icon font library -->
-
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-table"></i>
-                                <p>
-                                    <i class="fas fa-angle-left right"></i>
-                                    Empleados
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="./crearEmpleado.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon text-success"></i>
-                                        <p>Agregar empleado</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="./editarEmpleado.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon text-info"></i>
-                                        <p>Editar empleado</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="./desactivarEmpleado.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon text-danger"></i>
-                                        <p>Eliminar empleado</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./calendario.php" class="nav-link">
-                                <i class="nav-icon far fa-calendar-alt"></i>
-                                <p>
-                                    Asignar turnos
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="./otros.php" class="nav-link">
-                                <i class="nav-icon fas fa-edit"></i>
-                                <p>
-                                    Otros
-                                </p>
-                            </a>
-                        </li>
-                        <!-- LABELS -->
-                        <li class="nav-header">LABELS</li>
-                        <li class="nav-item">
-                            <a href="./lib/logout.php" class="nav-link">
-                                <i class="nav-icon far fa-circle text-danger"></i>
-                                <p>Cerrar Sesión </p>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- /.sidebar-menu -->
-            </div>
-            <!-- /.sidebar -->
-        </aside>
+        <?php
+        require('./sidebar.php')
+        ?>
+        <!-- /.Main Sidebar Container -->
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -255,25 +280,33 @@ if (!isset($user)) {
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="inicio.php">Inicio</a></li>
-                                <li class="breadcrumb-item active">Empleados</li>
+                                <li class="breadcrumb-item active">Lista Empleados</li>
                             </ol>
                         </div>
                     </div>
-                </div><!-- /.container-fluid -->
+                </div>
+                <!-- /.container-fluid -->
             </section>
 
             <!-- Main content -->
             <section class="content">
+
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
                             <!-- /.card -->
-                            <div class="card">
+                            <div class="card card-top-line mt-4">
                                 <!-- /.card-header -->
+
                                 <div class="card-body">
-                                    <table id="example1" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
+                                    <table id="example" class="table table-bordered table-striped bdr ">
+                                        <thead class="thead-init thead-titulo">
+                                            <th scope="col" colspan="10" class="text-center " style="font-size:20px;">
+                                                <b> Empleados registrados</b>
+
+                                            </th>
+                                            </tr>
+                                            <tr class="thead-init thead-subtitulo ">
                                                 <th>Identificación</th>
                                                 <th>Apellidos</th>
                                                 <th>Nombres</th>
@@ -303,18 +336,7 @@ if (!isset($user)) {
                                                 </tr>
                                             <?php } ?>
                                         </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>Identificación</th>
-                                                <th>Apellidos</th>
-                                                <th>Nombres</th>
-                                                <th>Teléfono</th>
-                                                <th>Género</th>
-                                                <th>Profesión</th>
-                                                <th>Contrato</th>
-                                                <th>Cargo</th>
-                                            </tr>
-                                        </tfoot>
+
                                     </table>
                                 </div>
                                 <!-- /.card-body -->
@@ -331,12 +353,12 @@ if (!isset($user)) {
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <div class="float-right d-none d-sm-block">
-                <b>Version</b> 3.0.5
-            </div>
-            <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-            reserved.
-        </footer>
+      <div class="float-right d-none d-sm-block">
+        <b>Versión</b> 1
+      </div>
+      <strong>Copyright 2022-2025 <a href="http://www.umariana.edu.co">Univerdasidad Mariana</a>.</strong> 
+      
+    </footer>
 
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
@@ -374,6 +396,15 @@ if (!isset($user)) {
                 "info": true,
                 "autoWidth": false,
                 "responsive": true,
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable({
+                "responsive": true,
+                "autoWidth": false,
+                "lengthChange": true,
             });
         });
     </script>

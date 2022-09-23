@@ -2,18 +2,29 @@
     include("lib/conexion.php");
 
     //Recibir la variable por el metodo Get
-    $id = $_GET['id'];
+    $id = $_POST['id_desactivar'];
 
-    //Sentencis SQL para eliminar registro
-    $sql = "DELETE FROM cargos WHERE idCargo = '$id'";
+    //ingresar los valores a la tabla
 
+    //recibir variables
+
+    // crear una consulata para insertar las variables en la tabla
+    $sql = "UPDATE cargos SET estado = 'inactivo'
+            WHERE idCargo = $id";
     $consulta = mysqli_query($miConexion, $sql);
-    //Validar la consulta
     if (!$consulta) {
-        # code...
-        die("Consulta no realizada");
+        echo '
+            <script>
+                alert("Error \n Verifica e inenta nuevamente");
+                window.location = "./cargos.php";
+            </script>
+        ';
+        die(mysqli_error($miConexion));
+    } else {
+        echo '
+            <script>
+                
+                window.location = "./cargos.php";
+            </script>
+        ';
     }
-    else{
-        header("Location: ./cargos.php"); // redirecciona
-    }
-?>

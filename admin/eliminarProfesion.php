@@ -1,19 +1,30 @@
-<?php 
-    include("lib/conexion.php");
+<?php
+include("lib/conexion.php");
 
-    //Recibir la variable por el metodo Get
-    $id = $_GET['id'];
+//Recibir la variable por el metodo Get
+$id = $_POST['id_desactivar'];
 
-    //Sentencis SQL para eliminar registro
-    $sql = "DELETE FROM profesion WHERE idProfesion = '$id'";
+//ingresar los valores a la tabla
 
-    $consulta = mysqli_query($miConexion, $sql);
-    //Validar la consulta
-    if (!$consulta) {
-        # code...
-        die("Consulta no realizada");
-    }
-    else{
-        header("Location: profesiones.php"); // redirecciona
-    }
-?>
+//recibir variables
+
+// crear una consulata para insertar las variables en la tabla
+$sql = "UPDATE profesion SET estado = 'inactivo'
+            WHERE idProfesion = $id";
+$consulta = mysqli_query($miConexion, $sql);
+if (!$consulta) {
+    echo '
+            <script>
+                alert("Error \n Verifica e inenta nuevamente");
+                window.location = "./cargos.php";
+            </script>
+        ';
+    die(mysqli_error($miConexion));
+} else {
+    echo '
+            <script>
+               
+                window.location = "./cargos.php";
+            </script>
+        ';
+}

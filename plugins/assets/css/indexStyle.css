@@ -33,12 +33,28 @@ body {
     font-family: 'Roboto', sans-serif;
     text-align: center;
     margin-top: 100rem;
-    background-image: url(../images/DeptalColor.jpg);  
+    background-image: url(../images/DeptalColor_copia.jpg);  
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
   }
  
-  
+  .sidebar-dark-blue {
+    background: #157e70 !important;
+    text-decoration-color: rgb(255, 255, 255);
+  }
+
+  .sidebar-blue2 {
+    background: #108b7b;
+    text-decoration-color: rgb(255, 255, 255);
+  }
+  .content-wrapper{
+    
+    background-image: url(../images/DeptalColor_copia.jpg);  
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    }
   
